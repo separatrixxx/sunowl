@@ -23,6 +23,8 @@ export const TelegramProvider = ({ children }: { children: React.ReactNode }) =>
       app.ready();
       setWebApp(app);
       app.expand();
+
+      app.setHeaderColor('#000');
     }
   }, [router]);
 

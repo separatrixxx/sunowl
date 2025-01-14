@@ -1,0 +1,40 @@
+.borderButton {
+	display: grid;
+	align-items: center;
+
+	width: fit-content;
+	height: fit-content;
+	padding: 10px 16px;
+
+	cursor: pointer;
+	transition-duration: 300ms;
+
+	border: none;
+
+	border-radius: 9999px;
+	outline: 3px solid var(--white);
+	outline-offset: -3px;
+	justify-items: center;
+	grid-template-columns: auto;
+	background: none;
+}
+
+.borderButton:active,
+.weba:hover {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	outline-color: var(--lightPrimary);
+}
+
+.text {
+	transition-duration: 300ms;
+
+	color: var(--white);
+}
+
+.borderButton:active > .text,
+.weba:hover > .text {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	color: var(--lightPrimary);
+}

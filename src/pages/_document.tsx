@@ -7,7 +7,6 @@ export default function Document() {
       <Head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link href="https://fonts.cdnfonts.com/css/komika-axis" rel="stylesheet" />
       </Head>
       <body>
         <Main />

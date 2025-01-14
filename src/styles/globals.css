@@ -8,9 +8,9 @@ body {
 	-ms-user-select: auto;
 	user-select: auto;
 
-	background: linear-gradient(180deg, var(--black) 0%, var(--dark) 100%);
+	background: linear-gradient(180deg, var(--black) 0%, var(--dark) 100%) no-repeat;
 
-	font-family: 'komika-axis', sans-serif;
+	font-family: 'Komika Axis', sans-serif;
 	-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 	-webkit-tap-highlight-color: transparent;
 }
@@ -26,15 +26,27 @@ a {
 	text-decoration: none;
 }
 
+@font-face {
+	font-family: 'Komika Axis';
+	font-weight: 400;
+	font-style: normal;
+	src: local('Komika Axis'), url('https://fonts.cdnfonts.com/s/251/KOMIKAX_.woff') format('woff');
+}
+
 :root {
 	--primary: #EF3C40;
+	--lightPrimary: #FF595D;
 	--second: #5C78B1;
 	--black: #000;
 	--dark: #0B152C;
+	--darkText: #17233D;
 	--white: #FFF;
 	--light: #DDD;
 	--darkLight: #A3A3A3;
+	--lightGreen: #3AB06A;
+	--green: #11773A;
+	--darkGreen: #0E3029;
 	--error: #FF1500;
 	--banana: #FFC803;
-	--font-family: 'komika-axis', sans-serif;
+	--font-family: 'Komika Axis', sans-serif;
 }

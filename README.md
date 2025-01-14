@@ -1,4 +1,4 @@
-# sunowl
+# SunOWL
 
 ### Install dependencies first: `npm install`
 
