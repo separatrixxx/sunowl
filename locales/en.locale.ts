@@ -14,7 +14,7 @@ export const en = {
     owl: "OWL",
     spin_points: "SPIN POINTS",
     to_start_you_must_subscribed: "TO START SPIN YOU MUST BE SUBSCRIBED TO OUR SOCIALS.",
-    spin_for_tokens: "SPIN FOR TOkeNS",
+    spin_for_tokens: "SPIN FOR TOKENS",
     spins_available_for_today: "Spins available for today",
     how_increase_daily_spins: "HOW To INCREASE DAILY SPINS?",
     subscribe_to_our_socials: "SUBSCRIBE TO OUR SOCIALS",
