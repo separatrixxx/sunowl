@@ -2,9 +2,9 @@
 	display: grid;
 	align-items: center;
 
-	width: fit-content;
+	width: 100%;
 	height: fit-content;
-	padding: 20px 70.5px;
+	padding: 20px;
 
 	cursor: pointer;
 	transition-duration: 300ms;

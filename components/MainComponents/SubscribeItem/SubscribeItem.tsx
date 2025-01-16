@@ -7,8 +7,8 @@ import { Button } from '../../Buttons/Button/Button';
 import cn from 'classnames';
 
 
-export const SubscribeItem = ({ type, isBorder }: SubscribeItemProps): JSX.Element => {
-    const { tgUser } = useSetup();
+export const SubscribeItem = ({ type, link, isBorder }: SubscribeItemProps): JSX.Element => {
+    const { webApp, tgUser } = useSetup();
 
     return (
         <div className={cn(styles.subscribeItem, {
@@ -18,7 +18,7 @@ export const SubscribeItem = ({ type, isBorder }: SubscribeItemProps): JSX.Eleme
                 {setLocale(tgUser?.language_code).join_owl + ' ' + type}
             </Htag>
             <Button text={setLocale(tgUser?.language_code).join} type='primary'
-                onClick={() => {}} />
+                onClick={() => webApp?.openTelegramLink(link)} />
         </div>
     );
 };

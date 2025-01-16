@@ -2,10 +2,16 @@ import { ModalProps } from './Modal.props';
 import styles from './Modal.module.css';
 import { motion } from 'framer-motion';
 import { useEffect } from 'react';
+import { Htag } from '../Htag/Htag';
+import { isWebPlatform } from '../../../helpers/platform.helper';
+import { useSetup } from '../../../hooks/useSetup';
+import CloseIcon from './close.svg';
 import cn from 'classnames';
 
 
-export const Modal = ({ active, setActive, children }: ModalProps): JSX.Element => {
+export const Modal = ({ title, isActive, setIsActive, children }: ModalProps): JSX.Element => {
+    const { webApp } = useSetup();
+
     const variants = {
         visible: {
             opacity: 1,
@@ -17,17 +23,17 @@ export const Modal = ({ active, setActive, children }: ModalProps): JSX.Element 
 
     const variantsModal = {
         visible: {
-            transform: 'scale(1)',
+            transform: 'translateY(0%)',
         },
         hidden: {
-            transform: 'scale(0.5)',
+            transform: 'translateY(100%)',
         }
     };
 
     useEffect(() => {
         const handleEsc = (event: KeyboardEvent) => {
             if (event.key === 'Escape') {
-                setActive(false);
+                setIsActive(false);
             }
         };
 
@@ -36,21 +42,28 @@ export const Modal = ({ active, setActive, children }: ModalProps): JSX.Element 
         return () => {
             document.removeEventListener('keydown', handleEsc);
         };
-    }, [setActive]);
+    }, [setIsActive]);
 
     return (
         <motion.div className={cn(styles.modal, {
-            [styles.active]: active,
-        })} onClick={() => setActive(false)}
+            [styles.active]: isActive,
+        })} onClick={() => setIsActive(false)}
             variants={variants}
-            initial={active ? 'visible' : 'hidden'}
+            initial={isActive ? 'visible' : 'hidden'}
             transition={{ duration: 0.15 }}
-            animate={active ? 'visible' : 'hidden'}>
+            animate={isActive ? 'visible' : 'hidden'}>
             <motion.div className={styles.modalContent} onClick={e => e.stopPropagation()}
                 variants={variantsModal}
-                initial={active ? 'visible' : 'hidden'}
+                initial={isActive ? 'visible' : 'hidden'}
                 transition={{ duration: 0.15 }}
-                animate={active ? 'visible' : 'hidden'}>
+                animate={isActive ? 'visible' : 'hidden'}>
+                <Htag tag='s' className={styles.modalTitle}>
+                    <span />
+                    {title}
+                    <CloseIcon className={cn(styles.closeIcon, {
+                        [styles.weba]: isWebPlatform(webApp?.platform),
+                    })} onClick={() => setIsActive(false)} />
+                </Htag>
                 {children}
             </motion.div>
         </motion.div>

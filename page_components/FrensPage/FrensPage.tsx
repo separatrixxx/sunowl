@@ -6,10 +6,16 @@ import { MainLink } from '../../components/Common/MainLink/MainLink';
 import { Htag } from '../../components/Common/Htag/Htag';
 import { setLocale } from '../../helpers/locale.helper';
 import { MainButton } from '../../components/Buttons/MainButton/MainButton';
+import { FrensList } from '../../components/FrensComponents/FrensList/FrensList';
+import { useState } from 'react';
+import { Modal } from '../../components/Common/Modal/Modal';
+import { FrensModal } from '../../components/FrensComponents/FrensModal/FrensModal';
 
 
 export const FrensPage = (): JSX.Element => {
-    const { tgUser } = useSetup();
+    const { tgUser, user } = useSetup();
+
+    const [isActive, setIsActive] = useState<boolean>(false);
 
     return (
         <>
@@ -27,15 +33,27 @@ export const FrensPage = (): JSX.Element => {
                                 }}
                             />
                             <Htag tag='l'>
-                                {setLocale(tgUser.language_code).invite_frens}
+                                {
+                                    user.data.statistics.total_friends === 0 ?
+                                        setLocale(tgUser.language_code).invite_frens :
+                                        <>
+                                           {`${user.data.statistics.total_friends} ${setLocale(tgUser.language_code).frens}. `}
+                                            <span className={styles.verifiedFrens}>{`${user.data.statistics.authorized_friends} ${setLocale(tgUser.language_code).verified}`}</span>
+                                        </>
+                                }
                             </Htag>
                             <Htag tag='s' className={styles.frensText}>
                                 {setLocale(tgUser.language_code).invite_frens_text}
                             </Htag>
+                            <FrensList />
                             <MainButton className={styles.frensButton}
                                 text={setLocale(tgUser.language_code).invite_frens} type='primary'
-                                onClick={() => {}} />
+                                onClick={() => setIsActive(true)} />
                             <Navbar />
+                            <Modal title={setLocale(tgUser.language_code).invite_a_fren}
+                                isActive={isActive} setIsActive={setIsActive} >
+                                <FrensModal setIsActive={setIsActive} />
+                            </Modal>
                         </>
                 }
 

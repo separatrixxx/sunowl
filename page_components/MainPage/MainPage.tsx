@@ -10,7 +10,7 @@ import { SubscribeList } from '../../components/MainComponents/SubscribeLIst/Sub
 
 
 export const MainPage = (): JSX.Element => {
-    const { tgUser } = useSetup();
+    const { tgUser, pool } = useSetup();
 
     return (
         <>
@@ -31,7 +31,7 @@ export const MainPage = (): JSX.Element => {
                                 {setLocale(tgUser.language_code).tokens_left + ':'}
                             </Htag>
                             <Htag tag='l' className={styles.mainTokens}>
-                                {(120000000).toLocaleString('ru-RU')}
+                                {pool.data.tokens_remaining.toLocaleString('ru-RU')}
                                 <span>{' ' + setLocale(tgUser.language_code).owl}</span>
                             </Htag>
                             <MainBlock />

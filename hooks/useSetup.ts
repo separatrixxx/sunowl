@@ -9,10 +9,15 @@ export const useSetup = () => {
     const dispatch = useDispatch();
     const { webApp, tgUser } = useTelegram();
 
+    const user = useSelector((state: AppState) => state.user.user);
+    const pool = useSelector((state: AppState) => state.pool.pool);
+
     return {
         router,
         dispatch,
         webApp,
         tgUser,
+        user,
+        pool,
     };
 };

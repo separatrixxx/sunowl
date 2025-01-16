@@ -1,0 +1,12 @@
+.frensModalText {
+	width: 90%;
+	margin-bottom: 4px;
+
+	text-align: center;
+
+	font-family: "Comic Neue", serif !important;
+}
+
+.frensModalText > span {
+	color: var(--yellow);
+}

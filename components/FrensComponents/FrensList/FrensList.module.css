@@ -1,0 +1,22 @@
+.frensList {
+	display: grid;
+
+	width: 100%;
+	justify-items: center;
+	gap: 10px;
+	margin: 28px 0;
+}
+
+.image {
+	width: 65%;
+	height: fit-content;
+
+	object-fit: cover;
+	margin-bottom: 10px;
+}
+
+.noFrensList {
+	align-items: end;
+
+	margin-bottom: 70px;
+}

@@ -1,7 +1,9 @@
-import { ReactNode } from 'react';
+import { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react';
 
-export interface ModalProps {
-	active: boolean,
-	setActive: (e: any) => void,
+
+export interface ModalProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+	title: string,
+	isActive: boolean,
+	setIsActive: (e: any) => void,
 	children: ReactNode,
 }
