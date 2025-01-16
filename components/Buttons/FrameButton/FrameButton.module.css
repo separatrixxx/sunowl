@@ -7,13 +7,13 @@
 	padding: 16px 35px;
 
 	border-radius: 26px;
-	background: var(--lightGreen);
 	justify-items: center;
 	grid-template-columns: auto;
+	background: var(--darkGreen);
 }
 
 .pendingFrame {
-	background: var(--darkGreen);
+	background: var(--lightGreen);
 }
 
 .errorFrame {
@@ -21,13 +21,14 @@
 }
 
 .frameButton > svg {
-	fill: var(--white);
+	fill: var(--green);
 
 	width: 21px;
 }
 
-.pendingFrame > svg {
-	fill: var(--green);
+.pendingFrame > svg,
+.errorFrame > svg {
+	fill: var(--white);
 }
 
 @media (max-width: 300px) {

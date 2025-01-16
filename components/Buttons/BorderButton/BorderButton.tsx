@@ -13,7 +13,7 @@ export const BorderButton = ({ text, className, onClick }: BorderButtonProps): J
         <button className={cn(styles.borderButton, className, {
             [styles.weba]: isWebPlatform(webApp?.platform),
         })} onClick={onClick}>
-            <Htag tag='s' className={styles.text}>
+            <Htag tag='s'>
                 {text}
             </Htag>
         </button>

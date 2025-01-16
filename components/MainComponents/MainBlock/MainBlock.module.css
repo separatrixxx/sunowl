@@ -1,0 +1,60 @@
+.mainBlock {
+	position: relative;
+
+	display: grid;
+	overflow-x: hidden;
+	overflow-y: visible;
+
+	width: calc(100% - 64px);
+	height: fit-content;
+	margin-top: 40px;
+	padding: 28px 32px;
+
+	border-radius: 40px;
+	background: var(--primary);
+	justify-items: center;
+	gap: 30px;
+}
+
+.spinPoints {
+	color: var(--yellow);
+	justify-self: right;
+}
+
+.mustSubscribed {
+	max-width: 70%;
+
+	text-align: center;
+}
+
+.spinsAvailable {
+	margin: -10px 0;
+
+	font-family: "Comic Neue", serif !important;
+}
+
+.coinImage1 {
+	position: absolute;
+	top: 20%;
+	right: -50px;
+
+	overflow: hidden;
+
+	width: 100px;
+	height: fit-content;
+
+	transform: rotate(255deg);
+	object-fit: cover;
+}
+
+.coinImage2 {
+	position: absolute;
+	top: -30px;
+	left: 30px;
+
+	overflow: hidden;
+
+	width: 76px;
+	height: fit-content;
+	object-fit: cover;
+}

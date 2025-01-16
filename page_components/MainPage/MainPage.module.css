@@ -2,5 +2,23 @@
 	display: grid;
 
 	width: 100%;
+	min-height: calc(100vh - 48px);
 	justify-items: center;
+	padding: 24px 0;
+	grid-template-rows: repeat(3, auto) 1fr;
+	padding-bottom: 78px;
+}
+
+.mainTitle {
+	color: var(--darkLight) !important;
+
+	font-family: "Comic Neue", serif !important;
+}
+
+.mainTokens {
+	color: var(--white) !important;
+}
+
+.mainTokens > span {
+	color: var(--primary) !important;
 }

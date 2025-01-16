@@ -1,0 +1,12 @@
+.subscribeItem {
+	display: grid;
+	align-items: center;
+
+	width: 100%;
+	padding: 24px 0;
+	grid-template-columns: 1fr auto;
+}
+
+.borderItem {
+	border-bottom: 1px solid var(--darkText);
+}

@@ -3,10 +3,10 @@ import { Toaster } from 'react-hot-toast';
 import { Navbar } from '../../components/NavbarComponents/Navbar/Navbar';
 import { useSetup } from '../../hooks/useSetup';
 import { MainLink } from '../../components/Common/MainLink/MainLink';
-import { Button } from '../../components/Buttons/Button/Button';
-import { BorderButton } from '../../components/Buttons/BorderButton/BorderButton';
-import { FrameButton } from '../../components/Buttons/FrameButton/FrameButton';
-import { MainButton } from '../../components/Buttons/MainButton/MainButton';
+import { Htag } from '../../components/Common/Htag/Htag';
+import { setLocale } from '../../helpers/locale.helper';
+import { MainBlock } from '../../components/MainComponents/MainBlock/MainBlock';
+import { SubscribeList } from '../../components/MainComponents/SubscribeLIst/SubscribeLIst';
 
 
 export const MainPage = (): JSX.Element => {
@@ -27,14 +27,15 @@ export const MainPage = (): JSX.Element => {
                                     duration: 2000,
                                 }}
                             />
-                            <Button text='share' type='primary' onClick={() => {}} />
-                            <Button text='share' type='white' onClick={() => {}} />
-                            <BorderButton text='HOW To INCREASE DAILY SPINS?' onClick={() => {}} />
-                            <FrameButton type='ok' />
-                            <FrameButton type='pending' />
-                            <FrameButton type='error' />
-                            <MainButton text='WITHDRAW' type='primary' onClick={() => {}} />
-                            <MainButton text='WITHDRAW' type='white' onClick={() => {}} />
+                            <Htag tag='s' className={styles.mainTitle}>
+                                {setLocale(tgUser.language_code).tokens_left + ':'}
+                            </Htag>
+                            <Htag tag='l' className={styles.mainTokens}>
+                                {(120000000).toLocaleString('ru-RU')}
+                                <span>{' ' + setLocale(tgUser.language_code).owl}</span>
+                            </Htag>
+                            <MainBlock />
+                            <SubscribeList />
                             <Navbar />
                         </>
                 }

@@ -14,12 +14,12 @@
 	border-radius: 20px;
 	outline: none;
 	background: var(--primary);
-	box-shadow: 6px 6px 0 0 var(--dark);
+	box-shadow: 6px 6px 0 0 var(--darker);
 	justify-items: center;
 	grid-template-columns: auto;
 }
 
-.mainButton:active,
+.activeButton:active,
 .weba:hover {
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -28,11 +28,16 @@
 
 .whiteButton {
 	background: var(--white);
-	box-shadow: 6px 6px 0 0 var(--primary);
+	box-shadow: 6px 6px 0 0 var(--darkPrimary);
 }
 
-.text {
-	color: var(--white);
+.lightButton {
+	background: var(--lightPrimary);
+	box-shadow: 6px 6px 0 0 var(--darkPrimary);
+}
+
+.disabledButton {
+	cursor: default;
 }
 
 .whiteButton > .text {

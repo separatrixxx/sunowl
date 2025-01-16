@@ -6,14 +6,17 @@ import { useSetup } from '../../../hooks/useSetup';
 import cn from 'classnames';
 
 
-export const MainButton = ({ text, type, isLoading, className, onClick }: MainButtonProps): JSX.Element => {
+export const MainButton = ({ text, type, isLoading, isDisabled, className, onClick }: MainButtonProps): JSX.Element => {
     const { webApp } = useSetup();
 
     return (
         <button className={cn(styles.mainButton, className, {
-            [styles.weba]: isWebPlatform(webApp?.platform),
+            [styles.activeButton]: !isDisabled,
+            [styles.weba]: !isDisabled && isWebPlatform(webApp?.platform),
+            [styles.lightButton]: type === 'light',
             [styles.whiteButton]: type === 'white',
-        })} onClick={onClick}>
+            [styles.disabledButton]: isDisabled,
+        })} onClick={!isDisabled ? onClick : () => {}}>
             {
                 !isLoading ?
                     <Htag tag='l' className={styles.text}>

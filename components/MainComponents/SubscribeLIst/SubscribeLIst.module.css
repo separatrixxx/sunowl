@@ -1,0 +1,8 @@
+.subscribeList {
+	display: grid;
+
+	width: calc(100% - 40px);
+	margin-top: 40px;
+	padding: 0 20px;
+	justify-items: left;
+}

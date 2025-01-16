@@ -23,18 +23,16 @@
 .weba:hover {
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-	outline-color: var(--lightPrimary);
+	outline-color: var(--light);
 }
 
 .text {
 	transition-duration: 300ms;
-
-	color: var(--white);
 }
 
 .borderButton:active > .text,
 .weba:hover > .text {
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-	color: var(--lightPrimary);
+	color: var(--light);
 }
