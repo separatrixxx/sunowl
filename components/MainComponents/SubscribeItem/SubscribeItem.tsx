@@ -27,10 +27,15 @@ export const SubscribeItem = ({ type, link, isAuth, isBorder }: SubscribeItemPro
                 !isClick && !isAuth ?
                     <Button text={setLocale(tgUser?.language_code).join} type='primary'
                         onClick={() => {
-                            if (link) {
-                                ToastSuccess(setLocale(tgUser?.language_code).checking_subscription);
-                                setIsClick(true);
-                                webApp?.openTelegramLink('https://t.me/test_bananana_codes');
+                            if (link) {                                
+                                try {
+                                    webApp?.openTelegramLink(link);
+
+                                    ToastSuccess(setLocale(tgUser?.language_code).checking_subscription);
+                                    setIsClick(true);
+                                } catch (e) {
+                                    console.log(e);
+                                }
                             }
                         }} />
                 : isClick ?
