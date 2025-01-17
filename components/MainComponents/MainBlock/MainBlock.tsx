@@ -33,8 +33,8 @@ export const MainBlock = (): JSX.Element => {
             <BorderButton text={setLocale(tgUser?.language_code).how_increase_daily_spins}
                 onClick={() => {}} />
             <Image className={styles.coinImage1} draggable='false'
-                loader={() => '/CoinImage.webp'}
-                src='/CoinImage.webp'
+                loader={() => '/CroppedCoinImage.webp'}
+                src='/CroppedCoinImage.webp'
                 alt={'coin image 1'}
                 width={1}
                 height={1}

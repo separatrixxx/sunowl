@@ -2,8 +2,6 @@
 	position: relative;
 
 	display: grid;
-	overflow-x: hidden;
-	overflow-y: visible;
 
 	width: calc(100% - 64px);
 	height: fit-content;
@@ -36,14 +34,13 @@
 .coinImage1 {
 	position: absolute;
 	top: 20%;
-	right: -50px;
+	right: 0;
 
 	overflow: hidden;
 
-	width: 100px;
+	width: 65px;
 	height: fit-content;
 
-	transform: rotate(255deg);
 	object-fit: cover;
 }
 
