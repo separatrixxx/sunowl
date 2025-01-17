@@ -5,7 +5,7 @@ import ErrorIcon from './error.svg';
 import cn from 'classnames';
 
 
-export const FrameButton = ({ type, className }: FrameButtonProps): JSX.Element => {
+export const FrameButton = ({ type, className, onClick }: FrameButtonProps): JSX.Element => {
     let Icon = OkIcon;
 
     if (type === 'error') {
@@ -16,7 +16,7 @@ export const FrameButton = ({ type, className }: FrameButtonProps): JSX.Element 
         <div className={cn(styles.frameButton, className, {
             [styles.pendingFrame]: type === 'pending',
             [styles.errorFrame]: type === 'error',
-        })}>
+        })} onClick={onClick}>
             <Icon />
         </div>
     );

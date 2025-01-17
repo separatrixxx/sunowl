@@ -12,15 +12,15 @@ export const MainLink = (): JSX.Element => {
     return (
         <Link href={process.env.NEXT_PUBLIC_CHANNEL_LINK || '/'} className={styles.link}
             target='_blank' aria-label='main link'>
-            <Image className={styles.logo} draggable='false'
-                loader={() => '/logo.svg'}
-                src='/logo.svg'
-                alt='logo image'
+            <Image className={styles.image} draggable='false'
+                loader={() => '/HzOwlImage.webp'}
+                src='/HzOwlImage.webp'
+                alt='main link image'
                 width={1}
                 height={1}
                 unoptimized={true}
             />
-            <Htag tag='m' className={styles.mainTitle}>
+            <Htag tag='l' className={styles.mainTitle}>
                 {setLocale(router.locale).main_title}
             </Htag>
         </Link>

@@ -31,11 +31,9 @@ export const FrensList = (): JSX.Element => {
                     </>
                 :
                     <>
-                        {user.data.statistics.authorized_friend_ids.map(f => (
-                            <FrensItem key={f} photo={'/HzOwlImage.webp'} name='fren' isVerified={true} />
-                        ))}
-                        {user.data.statistics.friend_ids.map(f => (
-                            <FrensItem key={f} photo={'/HzOwlImage.webp'} name='fren' isVerified={false} />
+                        {user.data.statistics.referral_details.map(f => (
+                            <FrensItem key={f.user_id} photo={f.profile_url} name={f.profile_name || ''}
+                                isVerified={f.fully_authorized} />
                         ))}
                     </>
             }

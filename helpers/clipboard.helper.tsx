@@ -1,11 +1,11 @@
-import { ToastSuccess } from "../components/Common/Toast/Toast";
+import { ToastError, ToastSuccess } from "../components/Common/Toast/Toast";
 
-export function copyToClipboard(link: string, text: string) {
+export function copyToClipboard(link: string, text: string, errorText: string) {
     navigator.clipboard.writeText(link)
         .then(() => {
             ToastSuccess(text);
         })
         .catch(err => {
-            console.error('Failed to copy text: ', err);
+            ToastError(errorText);
         });
 }

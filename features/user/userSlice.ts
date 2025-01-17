@@ -7,19 +7,14 @@ const userData: UserInterface = {
     data: {
         user_id: 0,
         reffreal_id: null,
+        refferal_link: '',
         timestamp_created: '',
         fully_authorized: false,
-        authentication: {
-            chat: false,
-            twitter: false,
-            telegram: false,
-            ton_wallet: false,
-            tron_wallet: false
-        },
+        authentication: [],
         claims_total: 0,
-        claims_log: [],
+        claims_log: {},
         connected_accounts_cache: {},
-        claims_available_per_day: 3,
+        claims_available_per_day: 0,
         last_login: null,
         daily_login_log: {},
         login_count: 0,
@@ -29,18 +24,18 @@ const userData: UserInterface = {
             claimed_count: 0,
             total_friends: 0,
             authorized_friends: 0,
-            friend_ids: [],
-            authorized_friend_ids: []
+            referral_details: [],
+            authorized_friend_ids: [],
         },
         auth_requirements: {
             message: '',
-            required_steps: []
+            required_steps: [],
         },
         optional_connections: {
             message: '',
-            available_connections: []
-        }
-    }
+            available_connections: [],
+        },
+    },
 };
 
 export const userSlice = createSlice({

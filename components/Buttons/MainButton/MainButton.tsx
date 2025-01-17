@@ -15,6 +15,7 @@ export const MainButton = ({ text, type, isLoading, isDisabled, className, onCli
             [styles.weba]: !isDisabled && isWebPlatform(webApp?.platform),
             [styles.lightButton]: type === 'light',
             [styles.whiteButton]: type === 'white',
+            [styles.blackButton]: type === 'black',
             [styles.disabledButton]: isDisabled,
         })} onClick={!isDisabled ? onClick : () => {}}>
             {

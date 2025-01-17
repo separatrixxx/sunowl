@@ -8,19 +8,20 @@ import { SubscribeItem } from '../SubscribeItem/SubscribeItem';
 export const SubscribeList = (): JSX.Element => {
     const { tgUser, user } = useSetup();
 
-    // user.data.auth_requirements.required_steps.map((rs, i) => (
-    //     console.log(rs)
-    // ))
-
     return (
         <div className={styles.subscribeList}>
             <Htag tag='l'>
                 {setLocale(tgUser?.language_code).subscribe_to_our_socials}
             </Htag>
-            {user.data.auth_requirements.required_steps.map((rs, i) => (
-                <SubscribeItem key={rs.auth_url} type={rs.type} link={rs.auth_url}
-                    isBorder={i !== 2} />
-            ))}
+            {user.data.authentication.slice(0, 3).map((rs, i) => {
+                const type = Object.keys(rs).find(key => key !== 'description' && key !== 'auth_url');
+                const isAuth = type ? rs[type] : undefined;
+
+                return (
+                    <SubscribeItem key={rs.auth_url || i} type={type || ''}
+                        link={rs.auth_url} isAuth={Boolean(isAuth)} isBorder={i !== 2} />
+                );
+            })}
         </div>
     );
 };

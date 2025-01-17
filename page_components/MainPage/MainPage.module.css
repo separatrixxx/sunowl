@@ -6,7 +6,6 @@
 	justify-items: center;
 	padding: 24px 0;
 	grid-template-rows: repeat(3, auto) 1fr;
-	padding-bottom: 78px;
 }
 
 .mainTitle {

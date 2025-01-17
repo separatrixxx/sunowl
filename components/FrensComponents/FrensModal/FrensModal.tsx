@@ -11,7 +11,7 @@ import { shareLink } from '../../../helpers/share.helper';
 
 
 export const FrensModal = ({ setIsActive }: FrensModalProps): JSX.Element => {
-    const { webApp, tgUser } = useSetup();
+    const { webApp, tgUser, user } = useSetup();
 
     return (
         <>
@@ -22,16 +22,17 @@ export const FrensModal = ({ setIsActive }: FrensModalProps): JSX.Element => {
             </Htag>
             <MainButton text={setLocale(tgUser?.language_code).send_invitation}
                 type='primary' onClick={() => {
-                    shareLink('link', '', webApp);
+                    shareLink(user.data.refferal_link, '', webApp);
                     setIsActive(false);
                 }} />
             <MainButton text={setLocale(tgUser?.language_code).copy_link}
                 type='primary' onClick={() => {
-                    copyToClipboard('link', setLocale(tgUser?.language_code).your_refferal_link_copied);
+                    copyToClipboard(user.data.refferal_link, setLocale(tgUser?.language_code).your_refferal_link_copied,
+                    setLocale(tgUser?.language_code).refferal_link_was_not_copied);
                     setIsActive(false);
                 }} />
             <MainButton text={setLocale(tgUser?.language_code).close}
-                type='white' onClick={() => setIsActive(false)} />
+                type='black' onClick={() => setIsActive(false)} />
         </>
     );
 };

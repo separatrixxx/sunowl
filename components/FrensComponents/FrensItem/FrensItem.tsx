@@ -10,7 +10,7 @@ import cn from 'classnames';
 
 
 export const FrensItem = ({ photo, name, isVerified }: FrensItemProps): JSX.Element => {
-    const { tgUser, user } = useSetup();
+    const { tgUser } = useSetup();
 
     let Icon = VerifiedIcon;
 
@@ -20,14 +20,18 @@ export const FrensItem = ({ photo, name, isVerified }: FrensItemProps): JSX.Elem
 
     return (
         <div className={styles.frensItem}>
-            <Image className={styles.frensImage} draggable='false'
-                loader={() => photo}
-                src={photo}
-                alt={`${name} fren image`}
-                width={1}
-                height={1}
-                unoptimized={true}
-            />
+            {
+                photo ?
+                    <Image className={styles.frensImage} draggable='false'
+                        loader={() => photo}
+                        src={photo}
+                        alt={`${name} fren image`}
+                        width={1}
+                        height={1}
+                        unoptimized={true}
+                    />
+                : <div className={styles.frensImage} />
+            }
             <Htag tag='s'>
                 {name}
             </Htag>

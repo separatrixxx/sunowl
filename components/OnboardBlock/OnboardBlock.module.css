@@ -1,0 +1,53 @@
+.onboardBlock {
+	display: grid;
+	align-items: end;
+
+	width: 100%;
+	height: calc(100vh - 48px);
+	grid-template-rows: 1fr repeat(2, auto);
+	gap: 24px;
+	justify-items: center;
+}
+
+.onboardBannerDiv {
+	position: relative;
+
+	width: 100%;
+	margin-bottom: 30px;
+}
+
+.onboardBannerDiv > svg {
+	width: 100%;
+}
+
+.image {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+
+	width: 42%;
+	height: fit-content;
+
+	transform: translateX(-50%) translateY(-50%);
+	object-fit: cover;
+}
+
+.onboardTextDiv {
+	display: grid;
+
+	width: calc(90% - 48px);
+	gap: 16px;
+	justify-items: center;
+}
+
+.onboardTextDiv > h1 {
+	text-align: center;
+}
+
+.onboardText {
+	font-family: "Comic Neue", serif !important;
+}
+
+.onboardButton {
+	width: calc(100% - 48px);
+}

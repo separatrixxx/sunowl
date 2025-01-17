@@ -5,10 +5,16 @@ import { setLocale } from '../../../helpers/locale.helper';
 import { Htag } from '../../Common/Htag/Htag';
 import { Button } from '../../Buttons/Button/Button';
 import cn from 'classnames';
+import { FrameButton } from '../../Buttons/FrameButton/FrameButton';
+import { useState } from 'react';
+import { getUser } from '../../../helpers/user.helper';
+import { ToastSuccess } from '../../Common/Toast/Toast';
 
 
-export const SubscribeItem = ({ type, link, isBorder }: SubscribeItemProps): JSX.Element => {
-    const { webApp, tgUser } = useSetup();
+export const SubscribeItem = ({ type, link, isAuth, isBorder }: SubscribeItemProps): JSX.Element => {
+    const { router, dispatch, webApp, tgUser } = useSetup();
+
+    const [isClick, setIsClick] = useState<boolean>(false);
 
     return (
         <div className={cn(styles.subscribeItem, {
@@ -17,8 +23,25 @@ export const SubscribeItem = ({ type, link, isBorder }: SubscribeItemProps): JSX
             <Htag tag='s'>
                 {setLocale(tgUser?.language_code).join_owl + ' ' + type}
             </Htag>
-            <Button text={setLocale(tgUser?.language_code).join} type='primary'
-                onClick={() => webApp?.openTelegramLink(link)} />
+            {
+                !isClick && !isAuth ?
+                    <Button text={setLocale(tgUser?.language_code).join} type='primary'
+                        onClick={() => {
+                            if (link) {
+                                ToastSuccess(setLocale(tgUser?.language_code).checking_subscription);
+                                setIsClick(true);
+                                webApp?.openTelegramLink('https://t.me/test_bananana_codes');
+                            }
+                        }} />
+                : isClick ?
+                    <FrameButton type='pending' onClick={() => getUser({
+                        router: router,
+                        webApp: webApp,
+                        dispatch: dispatch,
+                        tgUser: tgUser,
+                    })} />
+            : <FrameButton type='ok' />
+            }
         </div>
     );
 };
