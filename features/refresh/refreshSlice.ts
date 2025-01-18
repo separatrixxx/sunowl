@@ -3,8 +3,8 @@ import { RefreshInterface } from '../../interfaces/refresh.interface';
 
 
 const refreshData: RefreshInterface = {
-    pool: true,
     user: true,
+    tasks: true,
 }
 
 export const refreshSlice = createSlice({
@@ -13,15 +13,15 @@ export const refreshSlice = createSlice({
         refresh: refreshData,
     },
     reducers: {
-        changePool: (state, action) => {
-            state.refresh.pool = action.payload
-        },
         changeUser: (state, action) => {
             state.refresh.user = action.payload
+        },
+        changeTasks: (state, action) => {
+            state.refresh.tasks = action.payload
         },
     },
 });
 
-export const { changePool, changeUser } = refreshSlice.actions;
+export const { changeUser, changeTasks } = refreshSlice.actions;
 
 export default refreshSlice.reducer;

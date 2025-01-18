@@ -3,7 +3,6 @@ import { setLocale } from "./locale.helper";
 import { setPool } from "../features/pool/poolSlice";
 import { BaseArguments } from "../interfaces/refactor.interface";
 import { UserInterface } from "../interfaces/user.interface";
-import { changePool } from "../features/refresh/refreshSlice";
 
 
 export async function getPool(args: BaseArguments) {
@@ -14,7 +13,6 @@ export async function getPool(args: BaseArguments) {
             '/api/pool/status');
             
         dispatch(setPool(response));
-        dispatch(changePool(false));
     } catch (err: any) {
         webApp?.showAlert(setLocale(tgUser?.language_code).errors.get_pool_error);
         console.error(err);

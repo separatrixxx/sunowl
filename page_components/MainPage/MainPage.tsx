@@ -23,6 +23,8 @@ export const MainPage = (): JSX.Element => {
         setIsOnboard(isOnboard);
     }, [setIsOnboard]);
 
+    const tokensLeft = pool.data.tokens_remaining;
+
     return (
         <>
             <div className={styles.wrapper}>
@@ -45,7 +47,7 @@ export const MainPage = (): JSX.Element => {
                                             {setLocale(tgUser.language_code).tokens_left + ':'}
                                         </Htag>
                                         <Htag tag='l' className={styles.mainTokens}>
-                                            {pool.data.tokens_remaining.toLocaleString('ru-RU')}
+                                            {tokensLeft.toLocaleString('ru-RU')}
                                             <span>{' ' + setLocale(tgUser.language_code).owl}</span>
                                         </Htag>
                                         <MainBlock />

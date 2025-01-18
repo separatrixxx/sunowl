@@ -14,12 +14,14 @@ export const WithdrawBlock = (): JSX.Element => {
 
     const [isActive, setIsActive] = useState<boolean>(false);
 
+    const balance = user.data.statistics.claimed_total;
+
     return (
         <>
             <div className={styles.withdrawBlock}>
                 <CoinIcon className={styles.coinIcon} />
                 <Htag tag='xxl' className={styles.withdrawTitle}>
-                    {user.data.claims_total.toLocaleString('ru-RU')}
+                    {balance.toLocaleString('ru-RU')}
                     <span> {setLocale(tgUser?.language_code).owl}</span>
                 </Htag>
                 <MainButton text={setLocale(tgUser?.language_code).withdraw} type='primary'

@@ -1,4 +1,4 @@
 export interface RefreshInterface {
-    pool: boolean,
     user: boolean,
+    tasks: boolean,
 }
