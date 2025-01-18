@@ -18,7 +18,7 @@ export async function getUser(args: BaseArguments) {
         dispatch(setUser(response));
     } catch (err: any) {
         webApp?.showAlert(setLocale(tgUser?.language_code).errors.get_user_error, async function () {
-            webApp.close();
+            // webApp.close();
         });
 
         console.error(err);

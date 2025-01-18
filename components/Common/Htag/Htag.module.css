@@ -21,11 +21,13 @@
 }
 
 .xxl {
-	font-size: 60px;
+	font-size: 40px;
+	line-height: 42px;
 }
 
 .xl {
-	font-size: 50px;
+	font-size: 28px;
+	line-height: 32px;
 }
 
 .l {

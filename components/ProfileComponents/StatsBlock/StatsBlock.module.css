@@ -1,0 +1,6 @@
+.statsBlock {
+	display: grid;
+
+	width: 90%;
+	justify-items: center;
+}

@@ -6,7 +6,7 @@ import { useSetup } from '../../../hooks/useSetup';
 import cn from 'classnames';
 
 
-export const MainButton = ({ text, type, isLoading, isDisabled, className, onClick }: MainButtonProps): JSX.Element => {
+export const MainButton = ({ text, type, isLoading, isDisabled, isSmall, className, onClick }: MainButtonProps): JSX.Element => {
     const { webApp } = useSetup();
 
     return (
@@ -17,10 +17,11 @@ export const MainButton = ({ text, type, isLoading, isDisabled, className, onCli
             [styles.whiteButton]: type === 'white',
             [styles.blackButton]: type === 'black',
             [styles.disabledButton]: isDisabled,
+            [styles.smallButton]: isSmall,
         })} onClick={!isDisabled ? onClick : () => {}}>
             {
                 !isLoading ?
-                    <Htag tag='l' className={styles.text}>
+                    <Htag tag={!isSmall ? 'l' : 'm'} className={styles.text}>
                         {text}
                     </Htag>
                 : <div className={styles.spinner} />

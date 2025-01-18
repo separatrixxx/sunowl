@@ -7,3 +7,7 @@
 	justify-items: left;
 	padding-bottom: 78px;
 }
+
+.loadingDiv {
+	justify-items: center;
+}

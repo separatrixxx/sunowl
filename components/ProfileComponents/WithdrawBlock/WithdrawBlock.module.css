@@ -1,0 +1,23 @@
+.withdrawBlock {
+	z-index: 1;
+
+	display: grid;
+
+	width: 90%;
+	gap: 24px;
+	justify-items: center;
+}
+
+.coinIcon {
+	width: 100px;
+
+	transform: rotate(-38deg);
+}
+
+.withdrawTitle > span {
+	color: var(--primary);
+}
+
+.withdrawModal {
+	gap: 16px;
+}

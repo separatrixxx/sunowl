@@ -45,6 +45,10 @@
 	cursor: default;
 }
 
+.smallButton {
+	padding: 10px 20px;
+}
+
 .whiteButton > .text,
 .blackButton > .text {
 	color: var(--darkText);

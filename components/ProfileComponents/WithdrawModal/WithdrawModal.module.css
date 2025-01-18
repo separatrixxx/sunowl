@@ -1,0 +1,39 @@
+.withdrawText {
+	width: 90%;
+
+	text-align: center;
+
+	font-family: "Comic Neue", serif !important;
+}
+
+.tokensLeft {
+	color: var(--darkLight);
+}
+
+.tokens {
+	margin-top: -10px;
+}
+
+.tokens > span {
+	color: var(--primary);
+}
+
+.withdrawText1 {
+	color: var(--yellow);
+}
+
+.image {
+	width: 40%;
+	height: fit-content;
+
+	object-fit: cover;
+	margin-top: 12px;
+}
+
+.withdrawText2 {
+	margin-top: 4px;
+}
+
+.withdrawButton {
+	margin-top: 24px;
+}

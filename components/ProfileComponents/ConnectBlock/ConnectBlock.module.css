@@ -1,0 +1,41 @@
+.connectBlock {
+	z-index: 1;
+
+	display: grid;
+	align-items: start;
+
+	width: calc(100% - 64px);
+	padding: 32px;
+
+	border-radius: 40px;
+	background: var(--modal);
+	grid-template-columns: 1fr auto;
+	gap: 22px;
+}
+
+.connectTextDiv {
+	display: grid;
+	align-items: center;
+
+	width: 100%;
+	gap: 6px;
+}
+
+.connectText {
+	font-family: "Comic Neue", serif !important;
+}
+
+.connectButton {
+	padding: 10px 20px;
+}
+
+.connectedButton {
+	padding: 17.5px 24px;
+}
+
+@media (max-width: 380px) {
+	.connectBlock {
+		width: calc(100% - 48px);
+		padding: 24px;
+	}
+}

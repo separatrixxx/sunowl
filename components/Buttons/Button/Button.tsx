@@ -3,10 +3,11 @@ import styles from './Button.module.css';
 import { Htag } from '../../Common/Htag/Htag';
 import { isWebPlatform } from '../../../helpers/platform.helper';
 import { useSetup } from '../../../hooks/useSetup';
+import CrossIcon from './cross.svg';
 import cn from 'classnames';
 
 
-export const Button = ({ text, type, isLoading, className, onClick }: ButtonProps): JSX.Element => {
+export const Button = ({ text, type, isLoading, isIcon, className, onClick }: ButtonProps): JSX.Element => {
     const { webApp } = useSetup();
 
     return (
@@ -15,11 +16,13 @@ export const Button = ({ text, type, isLoading, className, onClick }: ButtonProp
             [styles.whiteButton]: type === 'white',
         })} onClick={onClick}>
             {
-                !isLoading ?
+                !isIcon && !isLoading ?
                     <Htag tag='m' className={styles.text}>
                         {text}
                     </Htag>
-                : <div className={styles.spinner} />
+                : !isIcon && isLoading ?
+                    <div className={styles.spinner} />
+                : <CrossIcon className={styles.crossIcon} />
             }
         </button>
     );

@@ -3,10 +3,20 @@ import { useSetup } from '../../../hooks/useSetup';
 import { setLocale } from '../../../helpers/locale.helper';
 import { Htag } from '../../Common/Htag/Htag';
 import { SubscribeItem } from '../SubscribeItem/SubscribeItem';
+import { LoadingDots } from '../../PreloaderComponents/LoadingDots/LoadingDots';
+import cn from 'classnames';
 
 
 export const SubscribeList = (): JSX.Element => {
     const { tgUser, user } = useSetup();
+
+    if (user.status !== 'success') {
+        return (
+            <div className={cn(styles.subscribeList, styles.loadingDiv)}>
+                <LoadingDots />
+            </div>
+        );
+    }
 
     return (
         <div className={styles.subscribeList}>

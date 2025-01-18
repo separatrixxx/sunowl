@@ -6,5 +6,6 @@ export interface MainButtonProps extends DetailedHTMLProps<HTMLAttributes<HTMLBu
     type: 'primary' | 'light' | 'white' | 'black',
     isLoading?: boolean,
     isDisabled?: boolean,
+    isSmall?: boolean,
 	onClick: (e: any) => void,
 }

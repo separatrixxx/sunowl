@@ -9,7 +9,7 @@ import CloseIcon from './close.svg';
 import cn from 'classnames';
 
 
-export const Modal = ({ title, isActive, setIsActive, children }: ModalProps): JSX.Element => {
+export const Modal = ({ title, isActive, setIsActive, children, className }: ModalProps): JSX.Element => {
     const { webApp } = useSetup();
 
     const variants = {
@@ -52,7 +52,7 @@ export const Modal = ({ title, isActive, setIsActive, children }: ModalProps): J
             initial={isActive ? 'visible' : 'hidden'}
             transition={{ duration: 0.15 }}
             animate={isActive ? 'visible' : 'hidden'}>
-            <motion.div className={styles.modalContent} onClick={e => e.stopPropagation()}
+            <motion.div className={cn(styles.modalContent, className)} onClick={e => e.stopPropagation()}
                 variants={variantsModal}
                 initial={isActive ? 'visible' : 'hidden'}
                 transition={{ duration: 0.15 }}

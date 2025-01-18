@@ -1,0 +1,57 @@
+.stickersBlock {
+	z-index: 1;
+
+	display: grid;
+	align-items: center;
+
+	width: calc(100% - 64px);
+	padding: 32px;
+
+	border-radius: 40px;
+	background: var(--modal);
+	grid-template-columns: auto 1fr;
+	gap: 28px;
+	justify-items: left;
+}
+
+.stickersTextDiv {
+	display: grid;
+	align-items: center;
+
+	width: 100%;
+	gap: 28px;
+	grid-template-rows: 1fr auto;
+	justify-items: left;
+}
+
+.image {
+	width: 160px;
+	height: fit-content;
+
+	object-fit: cover;
+}
+
+@media (max-width: 380px) {
+	.stickersBlock {
+		width: calc(100% - 48px);
+		padding: 24px;
+	}
+
+	.image {
+		width: 140px;
+	}
+}
+
+@media (max-width: 350px) {
+	.stickersBlock {
+		grid-template-columns: auto;
+	}
+
+	.stickersTextDiv {
+		gap: 16px;
+	}
+
+	.image {
+		width: 160px;
+	}
+}
