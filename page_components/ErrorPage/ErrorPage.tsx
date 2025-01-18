@@ -28,6 +28,7 @@ export const ErrorPage = ({ error }: ErrorPageProps): JSX.Element => {
                     width={1}
                     height={1}
                     unoptimized={true}
+                    priority={true}
                 />
                 <Htag tag="l" className={styles.errorText}>
                     {errorText}

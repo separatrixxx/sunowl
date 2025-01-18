@@ -2,7 +2,6 @@ import styles from './FrensPage.module.css';
 import { Toaster } from 'react-hot-toast';
 import { Navbar } from '../../components/NavbarComponents/Navbar/Navbar';
 import { useSetup } from '../../hooks/useSetup';
-import { MainLink } from '../../components/Common/MainLink/MainLink';
 import { Htag } from '../../components/Common/Htag/Htag';
 import { setLocale } from '../../helpers/locale.helper';
 import { MainButton } from '../../components/Buttons/MainButton/MainButton';
@@ -10,10 +9,12 @@ import { FrensList } from '../../components/FrensComponents/FrensList/FrensList'
 import { useState } from 'react';
 import { Modal } from '../../components/Common/Modal/Modal';
 import { FrensModal } from '../../components/FrensComponents/FrensModal/FrensModal';
+import { MainLink } from '../../components/MainComponents/MainLink/MainLink';
+import { Preloader } from '../../components/PreloaderComponents/Preloader/Preloader';
 
 
 export const FrensPage = (): JSX.Element => {
-    const { tgUser, user } = useSetup();
+    const { tgUser, user, firstVisit } = useSetup();
 
     const [isActive, setIsActive] = useState<boolean>(false);
 
@@ -23,7 +24,7 @@ export const FrensPage = (): JSX.Element => {
                 {
                     !tgUser ?
                         <MainLink />
-                        :
+                    : firstVisit ?
                         <>
                             <Toaster
                                 position="top-center"
@@ -55,6 +56,7 @@ export const FrensPage = (): JSX.Element => {
                                 <FrensModal setIsActive={setIsActive} />
                             </Modal>
                         </>
+                    : <Preloader />
                 }
 
             </div>

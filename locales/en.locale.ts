@@ -44,4 +44,6 @@ export const en = {
     onboard_text1: "Invite Frens, complete daily tasks and earn Spin Points. Each Spin Point gives you a chance to get up to 999 OWL Tokens.",
     onboard_text2: "There are almost 120 million giveaway of OWL Tokens, so hurry up.",
     checking_subscription: "Checking the subscription",
+    preloader_title: "FOR THOSE WHO ARE TIRED OF THE SAME CATS & DOGS",
+    sunowl_powered_by_tron: "SunOWL is powered by Tron blockchain",
 };

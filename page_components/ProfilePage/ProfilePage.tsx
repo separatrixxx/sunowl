@@ -2,11 +2,12 @@ import styles from './ProfilePage.module.css';
 import { Toaster } from 'react-hot-toast';
 import { Navbar } from '../../components/NavbarComponents/Navbar/Navbar';
 import { useSetup } from '../../hooks/useSetup';
-import { MainLink } from '../../components/Common/MainLink/MainLink';
+import { MainLink } from '../../components/MainComponents/MainLink/MainLink';
+import { Preloader } from '../../components/PreloaderComponents/Preloader/Preloader';
 
 
 export const ProfilePage = (): JSX.Element => {
-    const { tgUser } = useSetup();
+    const { tgUser, firstVisit } = useSetup();
 
     return (
         <>
@@ -14,7 +15,7 @@ export const ProfilePage = (): JSX.Element => {
                 {
                     !tgUser ?
                         <MainLink />
-                    :
+                    : firstVisit ?
                         <>
                             <Toaster
                                 position="top-center"
@@ -25,6 +26,7 @@ export const ProfilePage = (): JSX.Element => {
                             />
                             <Navbar />
                         </>
+                    : <Preloader />
                 }
 
             </div>

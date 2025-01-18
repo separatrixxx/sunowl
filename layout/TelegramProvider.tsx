@@ -2,6 +2,7 @@ import Script from "next/script";
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { ITelegramUser, IWebApp } from "../types/telegram";
 import { useSetup } from "../hooks/useSetup";
+import { toggleFirstVisit } from "../features/firstVisit/firstVisitSlice";
 
 
 export interface ITelegramContext {
@@ -12,7 +13,7 @@ export interface ITelegramContext {
 export const TelegramContext = createContext<ITelegramContext>({});
 
 export const TelegramProvider = ({ children }: { children: React.ReactNode }) => {
-  const { router } = useSetup();
+  const { router, dispatch, firstVisit } = useSetup();
 
   const [webApp, setWebApp] = useState<IWebApp | null>(null);
 
@@ -26,7 +27,13 @@ export const TelegramProvider = ({ children }: { children: React.ReactNode }) =>
 
       app.setHeaderColor('#000');
     }
-  }, [router]);
+
+    if (!firstVisit) {
+      setTimeout(() => {
+        dispatch(toggleFirstVisit());
+      }, 3000);
+    }
+  }, [firstVisit, router, dispatch]);
 
   const value = useMemo(() => {
     return webApp

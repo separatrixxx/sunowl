@@ -1,9 +1,9 @@
 import styles from './MainLink.module.css';
 import { setLocale } from '../../../helpers/locale.helper';
-import { Htag } from '../Htag/Htag';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useSetup } from '../../../hooks/useSetup';
+import { Htag } from '../../Common/Htag/Htag';
 
 
 export const MainLink = (): JSX.Element => {
@@ -19,6 +19,7 @@ export const MainLink = (): JSX.Element => {
                 width={1}
                 height={1}
                 unoptimized={true}
+                priority={true}
             />
             <Htag tag='l' className={styles.mainTitle}>
                 {setLocale(router.locale).main_title}

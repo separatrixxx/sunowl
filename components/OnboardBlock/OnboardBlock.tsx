@@ -22,6 +22,7 @@ export const OnboardBlock = ({ setIsOnboard }: OnboardBlockProps): JSX.Element =
                     width={1}
                     height={1}
                     unoptimized={true}
+                    priority={true}
                 />
             </div>
             <div className={styles.onboardTextDiv}>

@@ -1,0 +1,76 @@
+.preloader {
+	position: relative;
+
+	display: grid;
+	overflow: hidden;
+	align-items: end;
+
+	width: 100%;
+	height: calc(100vh - 48px);
+	grid-template-rows: 1fr repeat(3, auto);
+	gap: 30px;
+	justify-items: center;
+}
+
+.starsImage {
+	position: absolute;
+	top: 0;
+	left: 50%;
+
+	width: 300%;
+	height: fit-content;
+
+	transform: translateX(-50%);
+	object-fit: cover;
+}
+
+.preloaderBannerDiv {
+	position: relative;
+
+	width: 100%;
+	margin-bottom: 30px;
+}
+
+.preloaderBannerDiv > svg {
+	width: 100%;
+}
+
+.image {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+
+	width: 100%;
+	height: fit-content;
+
+	transform: translateX(-50%) translateY(-50%);
+	object-fit: cover;
+}
+
+.preloaderTitle {
+	width: 90%;
+	margin-bottom: 25px !important;
+
+	text-align: center;
+}
+
+.tronDiv {
+	display: grid;
+
+	width: 90%;
+	margin-top: 6px !important;
+	justify-items: center;
+	gap: 12px;
+}
+
+.tronDiv > svg {
+	width: 40px;
+}
+
+.tronText {
+	text-align: center;
+
+	color: var(--second);
+
+	font-family: "Comic Neue", serif !important;
+}

@@ -2,13 +2,14 @@ import styles from './TasksPage.module.css';
 import { Toaster } from 'react-hot-toast';
 import { Navbar } from '../../components/NavbarComponents/Navbar/Navbar';
 import { useSetup } from '../../hooks/useSetup';
-import { MainLink } from '../../components/Common/MainLink/MainLink';
 import { Htag } from '../../components/Common/Htag/Htag';
 import { setLocale } from '../../helpers/locale.helper';
+import { MainLink } from '../../components/MainComponents/MainLink/MainLink';
+import { Preloader } from '../../components/PreloaderComponents/Preloader/Preloader';
 
 
 export const TasksPage = (): JSX.Element => {
-    const { tgUser } = useSetup();
+    const { tgUser, firstVisit } = useSetup();
 
     return (
         <>
@@ -16,7 +17,7 @@ export const TasksPage = (): JSX.Element => {
                 {
                     !tgUser ?
                         <MainLink />
-                        :
+                    : firstVisit ?
                         <>
                             <Toaster
                                 position="top-center"
@@ -33,6 +34,7 @@ export const TasksPage = (): JSX.Element => {
                             </Htag>
                             <Navbar />
                         </>
+                    : <Preloader />
                 }
 
             </div>
