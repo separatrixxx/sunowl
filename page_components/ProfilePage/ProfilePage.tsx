@@ -5,7 +5,7 @@ import { useSetup } from '../../hooks/useSetup';
 import { MainLink } from '../../components/MainComponents/MainLink/MainLink';
 import { Preloader } from '../../components/PreloaderComponents/Preloader/Preloader';
 import { WithdrawBlock } from '../../components/ProfileComponents/WithdrawBlock/WithdrawBlock';
-import { StatsBlock } from '../../components/ProfileComponents/StatsBlock/StatsBlock';
+import { StatsList } from '../../components/ProfileComponents/StatsList/StatsList';
 import Image from 'next/image';
 import { StickersBlock } from '../../components/ProfileComponents/StickersBlock/StickersBlock';
 import { ConnectList } from '../../components/ProfileComponents/ConnectList/ConnectList';
@@ -39,7 +39,7 @@ export const ProfilePage = (): JSX.Element => {
                                 priority={true}
                             />
                             <WithdrawBlock />
-                            <StatsBlock />
+                            <StatsList />
                             <div className={styles.profileDiv}>
                                 <ConnectList />
                                 <StickersBlock />

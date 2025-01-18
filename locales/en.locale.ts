@@ -16,7 +16,7 @@ export const en = {
     to_start_you_must_subscribed: "TO START SPIN YOU MUST BE SUBSCRIBED TO OUR SOCIALS.",
     spin_for_tokens: "SPIN FOR TOKENS",
     spins_available_for_today: "Spins available for today",
-    how_increase_daily_spins: "HOW To INCREASE DAILY SPINS?",
+    how_increase_daily_spins: "HOW TO INCREASE DAILY SPINS",
     subscribe_to_our_socials: "SUBSCRIBE TO OUR SOCIALS",
     join_owl: "JOIN OWL",
     join: "JOIN",
@@ -66,4 +66,6 @@ export const en = {
     connect_wallet: "CONNECT WALLET",
     ton_wallet_modal_text: "You need to connect TON wallet to proceed payment.",
     tron_wallet_modal_text: "You need to connect TRON wallet to proceed payment.",
+    main_modal_text: "In your profile you have an option to increase your number of daily spins up to 16 claims per day. You can pay with Telegram Stars or in TON token.",
+    go_to_profile: "GO TO PROFILE",
 };

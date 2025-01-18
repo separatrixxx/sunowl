@@ -12,6 +12,7 @@ export const useSetup = () => {
     const user = useSelector((state: AppState) => state.user.user);
     const pool = useSelector((state: AppState) => state.pool.pool);
     const firstVisit = useSelector((state: AppState) => state.firstVisit.firstVisit);
+    const refresh = useSelector((state: AppState) => state.refresh.refresh);
 
     return {
         router,
@@ -21,5 +22,6 @@ export const useSetup = () => {
         user,
         pool,
         firstVisit,
+        refresh,
     };
 };

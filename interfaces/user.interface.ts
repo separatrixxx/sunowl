@@ -47,10 +47,16 @@ export interface ConnectedAccountsCacheInterface {
 export interface StatisticsInterface {
     claimed_total: number,
     claimed_count: number,
+    claims_used_today: number,
     total_friends: number,
     authorized_friends: number,
     referral_details: ReferralDetailInterface[],
     authorized_friend_ids: number[],
+    completed_tasks: {
+        total: number,
+        'TaskType.RAID_tasks': number,
+        'TaskType.CLAIM_tasks': number,
+    },
 }
 
 export interface ReferralDetailInterface {

@@ -22,10 +22,16 @@ const userData: UserInterface = {
         statistics: {
             claimed_total: 0,
             claimed_count: 0,
+            claims_used_today: 0,
             total_friends: 0,
             authorized_friends: 0,
             referral_details: [],
             authorized_friend_ids: [],
+            completed_tasks: {
+                total: 0,
+                'TaskType.RAID_tasks': 0,
+                'TaskType.CLAIM_tasks': 0,
+            },
         },
         auth_requirements: {
             message: '',

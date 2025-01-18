@@ -33,7 +33,6 @@ export const WithdrawModal = ({ setIsActive }: WithdrawModalProps): JSX.Element 
                 width={1}
                 height={1}
                 unoptimized={true}
-                priority={true}
             />
             <Htag tag='l'>
                 {setLocale(tgUser?.language_code).owl_is_tron_memecoin}

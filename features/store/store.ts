@@ -3,6 +3,7 @@ import { createWrapper } from "next-redux-wrapper";
 import userSlice from "../user/userSlice";
 import poolSlice from "../pool/poolSlice";
 import firstVisitSlice from "../firstVisit/firstVisitSlice";
+import refreshSlice from "../refresh/refreshSlice";
 
 
 const makeStore = () =>
@@ -11,6 +12,7 @@ const makeStore = () =>
       user: userSlice,
       pool: poolSlice,
       firstVisit: firstVisitSlice,
+      refresh: refreshSlice,
     },
     devTools: true,
 });

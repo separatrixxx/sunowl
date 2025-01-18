@@ -8,17 +8,19 @@ import { getPool } from "../../helpers/pool.helper";
 
 
 function Main(): JSX.Element {
-  const { router, dispatch, tgUser, webApp } = useSetup();
+  const { router, dispatch, tgUser, webApp, refresh } = useSetup();
 
   useEffect(() => {
-    if (tgUser) {
+    if (tgUser && refresh.user) {
       getUser({
         router: router,
         webApp: webApp,
         dispatch: dispatch,
         tgUser: tgUser,
       });
+    }
 
+    if (tgUser && refresh.pool) {
       getPool({
         router: router,
         webApp: webApp,
@@ -26,7 +28,7 @@ function Main(): JSX.Element {
         tgUser: tgUser,
       });
     }
-  }, [router, tgUser, webApp, dispatch]);
+  }, [router, tgUser, webApp, refresh, dispatch]);
 
   return (
     <>

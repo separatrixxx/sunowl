@@ -1,0 +1,16 @@
+.mainModalText {
+	width: 90%;
+
+	font-family: "Comic Neue", serif !important;
+}
+
+.image {
+	width: 75%;
+	height: fit-content;
+	margin: 4px 0 20px 0;
+
+	border-radius: 32px;
+	box-shadow: 0 0 16px 0 var(--mainModalShadow);
+
+	object-fit: cover;
+}

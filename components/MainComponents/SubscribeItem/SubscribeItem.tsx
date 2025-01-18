@@ -34,7 +34,7 @@ export const SubscribeItem = ({ type, link, isAuth, isBorder }: SubscribeItemPro
                                     ToastSuccess(setLocale(tgUser?.language_code).checking_subscription);
                                     setIsClick(true);
                                 } catch (e) {
-                                    console.log(e);
+                                    console.error(e);
                                 }
                             }
                         }} />
