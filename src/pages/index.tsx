@@ -20,7 +20,7 @@ function Main(): JSX.Element {
       });
     }
 
-    if (tgUser) {
+    if (tgUser && refresh.pool) {
       getPool({
         router: router,
         webApp: webApp,
