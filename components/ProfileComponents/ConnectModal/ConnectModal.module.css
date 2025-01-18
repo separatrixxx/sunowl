@@ -1,0 +1,13 @@
+.image {
+	width: 20%;
+	height: fit-content;
+
+	object-fit: cover;
+}
+
+.connectModalText {
+    width: 70%;
+	font-family: "Comic Neue", serif !important;
+    text-align: center;
+    margin-bottom: 4px;
+}

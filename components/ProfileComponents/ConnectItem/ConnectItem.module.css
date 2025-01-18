@@ -1,4 +1,4 @@
-.connectBlock {
+.connectItem {
 	z-index: 1;
 
 	display: grid;
@@ -34,7 +34,7 @@
 }
 
 @media (max-width: 380px) {
-	.connectBlock {
+	.connectItem {
 		width: calc(100% - 48px);
 		padding: 24px;
 	}

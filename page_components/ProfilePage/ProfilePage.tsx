@@ -7,9 +7,8 @@ import { Preloader } from '../../components/PreloaderComponents/Preloader/Preloa
 import { WithdrawBlock } from '../../components/ProfileComponents/WithdrawBlock/WithdrawBlock';
 import { StatsBlock } from '../../components/ProfileComponents/StatsBlock/StatsBlock';
 import Image from 'next/image';
-import { ConnectBlock } from '../../components/ProfileComponents/ConnectBlock/ConnectBlock';
-import { setLocale } from '../../helpers/locale.helper';
 import { StickersBlock } from '../../components/ProfileComponents/StickersBlock/StickersBlock';
+import { ConnectList } from '../../components/ProfileComponents/ConnectList/ConnectList';
 
 
 export const ProfilePage = (): JSX.Element => {
@@ -42,14 +41,7 @@ export const ProfilePage = (): JSX.Element => {
                             <WithdrawBlock />
                             <StatsBlock />
                             <div className={styles.profileDiv}>
-                                <ConnectBlock title={setLocale(tgUser?.language_code).connect_ton_wallet}
-                                    text={setLocale(tgUser?.language_code).you_will_need_it_ton}
-                                    isConnected={user.status === 'success' ? Boolean(user.data.authentication[3][0]) : false}
-                                    onClick={() => webApp?.openLink(user.data.authentication[3].auth_url || '/')} />
-                                <ConnectBlock title={setLocale(tgUser?.language_code).connect_tron_wallet}
-                                    text={setLocale(tgUser?.language_code).you_will_need_it_tron}
-                                    isConnected={user.status === 'success' ? Boolean(user.data.authentication[4][0]) : false}
-                                    onClick={() => webApp?.openLink(user.data.authentication[4].auth_url || '/')} />
+                                <ConnectList />
                                 <StickersBlock />
                             </div>
                             <Navbar />
