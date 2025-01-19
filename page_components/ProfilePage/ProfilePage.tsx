@@ -9,6 +9,7 @@ import { StatsList } from '../../components/ProfileComponents/StatsList/StatsLis
 import Image from 'next/image';
 import { StickersBlock } from '../../components/ProfileComponents/StickersBlock/StickersBlock';
 import { ConnectList } from '../../components/ProfileComponents/ConnectList/ConnectList';
+import { UpgradesBlock } from '../../components/ProfileComponents/UpgradesBlock/UpgradesBlock';
 
 
 export const ProfilePage = (): JSX.Element => {
@@ -42,6 +43,8 @@ export const ProfilePage = (): JSX.Element => {
                             <StatsList />
                             <div className={styles.profileDiv}>
                                 <ConnectList />
+                                <UpgradesBlock spins={1} nextSpins={2} priceTon={1}
+                                    priceStars={700} isFinal={false} />
                                 <StickersBlock />
                             </div>
                             <Navbar />

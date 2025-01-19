@@ -13,7 +13,6 @@ function Profile(): JSX.Element {
   useEffect(() => {
     if (tgUser && refresh.user) {
       getUser({
-        router: router,
         webApp: webApp,
         dispatch: dispatch,
         tgUser: tgUser,
@@ -22,7 +21,6 @@ function Profile(): JSX.Element {
 
     if (tgUser && refresh.pool) {
       getPool({
-        router: router,
         webApp: webApp,
         dispatch: dispatch,
         tgUser: tgUser,

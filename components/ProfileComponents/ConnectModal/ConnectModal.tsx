@@ -5,8 +5,6 @@ import Image from 'next/image';
 import { Htag } from '../../Common/Htag/Htag';
 import { setLocale } from '../../../helpers/locale.helper';
 import { MainButton } from '../../Buttons/MainButton/MainButton';
-import { BorderButton } from '../../Buttons/BorderButton/BorderButton';
-import cn from 'classnames';
 
 
 export const ConnectModal = ({ type, text, onClick, setIsActive }: ConnectModalProps): JSX.Element => {

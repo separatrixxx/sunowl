@@ -43,6 +43,13 @@
 
 .disabledButton {
 	cursor: default;
+
+	background: var(--lightPrimary);
+	box-shadow: 6px 6px 0 0 var(--darkPrimary);
+}
+
+.disabledButton > .text {
+	color: var(--white) !important;
 }
 
 .smallButton {

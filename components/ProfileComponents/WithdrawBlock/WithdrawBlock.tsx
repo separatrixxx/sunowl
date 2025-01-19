@@ -20,7 +20,7 @@ export const WithdrawBlock = (): JSX.Element => {
         <>
             <div className={styles.withdrawBlock}>
                 <CoinIcon className={styles.coinIcon} />
-                <Htag tag='xxl' className={styles.withdrawTitle}>
+                <Htag tag='xxxl' className={styles.withdrawTitle}>
                     {balance.toLocaleString('ru-RU')}
                     <span> {setLocale(tgUser?.language_code).owl}</span>
                 </Htag>

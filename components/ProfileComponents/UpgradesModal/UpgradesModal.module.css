@@ -1,0 +1,40 @@
+.upgradesImageDiv {
+	position: relative;
+
+	width: 55%;
+	margin: 4px 0;
+}
+
+.image {
+	width: 100%;
+	height: fit-content;
+
+	object-fit: cover;
+}
+
+.upgradesImageDiv > div {
+	position: absolute;
+	top: 45%;
+	left: 52%;
+
+	display: grid;
+
+	transform: translateX(-50%) translateY(-50%);
+	justify-items: center;
+}
+
+.upgradesImageTitle {
+	color: var(--primary);
+}
+
+.upgradesText {
+	width: 90%;
+
+	text-align: center;
+
+	font-family: "Comic Neue", serif !important;
+}
+
+.upgradesButton {
+	margin-top: 20px;
+}

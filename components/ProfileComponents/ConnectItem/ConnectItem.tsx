@@ -5,9 +5,9 @@ import { Htag } from '../../Common/Htag/Htag';
 import { setLocale } from '../../../helpers/locale.helper';
 import { Button } from '../../Buttons/Button/Button';
 import { useState } from 'react';
-import cn from 'classnames';
 import { Modal } from '../../Common/Modal/Modal';
 import { ConnectModal } from '../ConnectModal/ConnectModal';
+import cn from 'classnames';
 
 
 export const ConnectItem = ({ type, title, text, isConnected, onClick }: ConnectItemProps): JSX.Element => {

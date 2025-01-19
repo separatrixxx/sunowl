@@ -12,7 +12,7 @@ import { ToastSuccess } from '../../Common/Toast/Toast';
 
 
 export const SubscribeItem = ({ type, link, isAuth, isBorder }: SubscribeItemProps): JSX.Element => {
-    const { router, dispatch, webApp, tgUser } = useSetup();
+    const { dispatch, webApp, tgUser } = useSetup();
 
     const [isClick, setIsClick] = useState<boolean>(false);
 
@@ -40,12 +40,11 @@ export const SubscribeItem = ({ type, link, isAuth, isBorder }: SubscribeItemPro
                         }} />
                 : isClick ?
                     <FrameButton type='pending' onClick={() => getUser({
-                        router: router,
                         webApp: webApp,
                         dispatch: dispatch,
                         tgUser: tgUser,
                     })} />
-            : <FrameButton type='ok' />
+                : <FrameButton type='ok' />
             }
         </div>
     );

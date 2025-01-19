@@ -55,6 +55,21 @@
 	fill: var(--white);
 }
 
+.starsText {
+	display: grid;
+	grid-template-columns: 1fr auto;
+
+	align-items: center;
+	gap: 4px;
+}
+
+.starsText > svg {
+	width: 17px;
+	fill: var(--white);
+
+	margin-top: 4px;
+}
+
 @keyframes spin {
 	0% { transform: rotate(0deg); }
 	100% { transform: rotate(360deg); }

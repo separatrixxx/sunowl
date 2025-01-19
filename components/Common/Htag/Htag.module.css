@@ -7,6 +7,7 @@
 .xs {
 	width: fit-content;
 	margin: 0;
+	padding: 0;
 
 	color: var(--white);
 
@@ -17,12 +18,13 @@
 }
 
 .xxxl {
-	font-size: 80px;
+	font-size: 40px;
+	line-height: 42px;
 }
 
 .xxl {
-	font-size: 40px;
-	line-height: 42px;
+	font-size: 32px;
+	line-height: 32px;
 }
 
 .xl {

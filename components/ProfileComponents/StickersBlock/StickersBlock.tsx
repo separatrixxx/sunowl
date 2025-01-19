@@ -26,7 +26,7 @@ export const StickersBlock = (): JSX.Element => {
                 <Htag tag='l'>
                     {setLocale(tgUser?.language_code).get_owl_stickers}
                 </Htag>
-                <Button text={setLocale(tgUser?.language_code).get_now} type='primary'
+                <Button className={styles.stickersButton} text={setLocale(tgUser?.language_code).get_now} type='primary'
                     onClick={() => webApp?.openTelegramLink(link)} />
             </div>
         </div>

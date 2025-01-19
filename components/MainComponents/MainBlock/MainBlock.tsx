@@ -9,16 +9,23 @@ import { ToastError } from '../../Common/Toast/Toast';
 import { useState } from 'react';
 import { Modal } from '../../Common/Modal/Modal';
 import { MainModal } from '../MainModal/MainModal';
+import { SpinsBlock } from '../SpinsBlock/SpinsBlock';
+import { claimTokens } from '../../../helpers/claim.helper';
 
 
 export const MainBlock = (): JSX.Element => {
-    const { tgUser, user } = useSetup();
+    const { dispatch, webApp, tgUser, user } = useSetup();
 
     const [isActive, setIsActive] = useState<boolean>(false);
 
     const spinsLeft = user.data.claims_total;
     const spinsPerDay = user.data.claims_available_per_day;
     const spinsUsedToday = user.data.statistics.claims_used_today;
+    const isDisabled = spinsLeft === 0 || spinsPerDay === spinsUsedToday;
+    const isFullyAuthorized = user.data.fully_authorized;
+
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [tokens, setTokens] = useState<number>(0);
 
     return (
         <>
@@ -26,13 +33,29 @@ export const MainBlock = (): JSX.Element => {
                 <Htag tag='s' className={styles.spinPoints}>
                     {setLocale(tgUser?.language_code).spin_points + ': ' + spinsLeft}
                 </Htag>
-                <Htag tag='l' className={styles.mustSubscribed}>
-                    {setLocale(tgUser?.language_code).to_start_you_must_subscribed}
-                </Htag>
-                <MainButton text={setLocale(tgUser?.language_code).spin_for_tokens} type='white'
+                {
+                    !isFullyAuthorized ?
+                        <Htag tag='l' className={styles.mustSubscribed}>
+                            {setLocale(tgUser?.language_code).to_start_you_must_subscribed}
+                        </Htag>
+                    : <SpinsBlock tokens={tokens} setTokens={setTokens} />
+                }
+                <MainButton text={setLocale(tgUser?.language_code)[
+                    spinsLeft === 0 ? 'no_more_spins' :
+                    spinsUsedToday === spinsPerDay ? 'next_spin_tomorrow' :
+                    'spin_for_tokens'
+                ]} type='white' isLoading={isLoading} isDisabled={isDisabled}
                     onClick={() => {
-                        if (!user.data.fully_authorized) {
+                        if (!isFullyAuthorized) {
                             ToastError(setLocale(tgUser?.language_code).join_our_socials_to_spin);
+                        } else if (!isDisabled) {
+                            claimTokens({
+                                dispatch: dispatch,
+                                webApp: webApp,
+                                tgUser: tgUser,
+                                setIsLoading: setIsLoading,
+                                setTokens: setTokens,
+                            });
                         }
                     }} />
                 <Htag tag='s' className={styles.spinsAvailable}>

@@ -31,6 +31,10 @@
 	object-fit: cover;
 }
 
+.stickersButton {
+	padding: 10px 10px;
+}
+
 @media (max-width: 380px) {
 	.stickersBlock {
 		width: calc(100% - 48px);

@@ -6,5 +6,6 @@ export interface ButtonProps extends DetailedHTMLProps<HTMLAttributes<HTMLButton
     type: 'primary' | 'white',
     isLoading?: boolean,
     isIcon?: boolean,
+    isStars?: boolean,
 	onClick: (e: any) => void,
 }
