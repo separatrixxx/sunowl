@@ -13,6 +13,7 @@ export const useSetup = () => {
     const pool = useSelector((state: AppState) => state.pool.pool);
     const firstVisit = useSelector((state: AppState) => state.firstVisit.firstVisit);
     const refresh = useSelector((state: AppState) => state.refresh.refresh);
+    const tasks = useSelector((state: AppState) => state.tasks.tasks);
 
     return {
         router,
@@ -23,5 +24,6 @@ export const useSetup = () => {
         pool,
         firstVisit,
         refresh,
+        tasks,
     };
 };

@@ -2,10 +2,22 @@ import { TasksPage } from "../../page_components/TasksPage/TasksPage";
 import Head from 'next/head';
 import { setLocale } from "../../helpers/locale.helper";
 import { useSetup } from "../../hooks/useSetup";
+import { useEffect } from "react";
+import { getTasks } from "../../helpers/tasks.helper";
 
 
 function Tasks(): JSX.Element {
-    const { router } = useSetup();
+    const { router, dispatch, tgUser, webApp, refresh } = useSetup();
+
+    useEffect(() => {
+        if (tgUser && refresh.tasks) {
+            getTasks({
+                webApp: webApp,
+                dispatch: dispatch,
+                tgUser: tgUser,
+            });
+        }
+    }, [router, tgUser, webApp, refresh, dispatch]);
 
     return (
         <>

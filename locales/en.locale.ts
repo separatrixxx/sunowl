@@ -26,6 +26,7 @@ export const en = {
     errors: {
         get_user_error: "An error occurred while retrieving user information",
         get_pool_error: "An error occurred while retrieving pool information",
+        get_tasks_error: "An error occurred while retrieving tasks",
         claim_tokens_error: "An error occurred while claiming tokens",
     },
     join_our_socials_to_spin: "Join our socials to spin",
@@ -82,4 +83,8 @@ export const en = {
     next_spin_tomorrow: "NEXT SPIN TOMMOROW",
     no_more_spins: "NO MORE SPINS",
     you_claimed_tokens: "You claimed $$$ tokens",
+    event_tasks: "EVENT TASKS",
+    raid_tasks: "RAID TASKS",
+    claim_tasks: "CLAIM TASKS",
+    go: "GO",
 };
