@@ -13,7 +13,24 @@ import { UpgradesBlock } from '../../components/ProfileComponents/UpgradesBlock/
 
 
 export const ProfilePage = (): JSX.Element => {
-    const { webApp, tgUser, user, firstVisit } = useSetup();
+    const { tgUser, firstVisit, upgrades } = useSetup();
+
+    const currentSpins = upgrades.data.current_spins;
+    const upgradesData = upgrades.data.upgrades;
+    
+    const levels = Object.entries(upgradesData)
+        .filter(([_, upgrade]) => upgrade !== null && typeof upgrade.spins === 'number')
+        .map(([level, upgrade]) => ({
+            level: parseInt(level.replace('level_', ''), 10),
+            ...upgrade
+        }))
+        .sort((a, b) => a.spins - b.spins);
+    
+    const currentLevelIndex = levels.findIndex(level => level.spins === currentSpins);
+    const isFinal = currentLevelIndex === levels.length - 1;
+    const nextSpins = isFinal || currentLevelIndex === -1 ? undefined : levels[currentLevelIndex + 1]?.spins ?? null;
+    const upgradePrice = isFinal || currentLevelIndex === -1 ? undefined : levels[currentLevelIndex + 1]?.price ?? null;
+    
 
     return (
         <>
@@ -43,8 +60,8 @@ export const ProfilePage = (): JSX.Element => {
                             <StatsList />
                             <div className={styles.profileDiv}>
                                 <ConnectList />
-                                <UpgradesBlock spins={1} nextSpins={2} priceTon={1}
-                                    priceStars={700} isFinal={false} />
+                                <UpgradesBlock spins={currentSpins} nextSpins={nextSpins}
+                                    priceStars={upgradePrice} isFinal={isFinal} />
                                 <StickersBlock />
                             </div>
                             <Navbar />

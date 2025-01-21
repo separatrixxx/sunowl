@@ -14,6 +14,7 @@ export const useSetup = () => {
     const firstVisit = useSelector((state: AppState) => state.firstVisit.firstVisit);
     const refresh = useSelector((state: AppState) => state.refresh.refresh);
     const tasks = useSelector((state: AppState) => state.tasks.tasks);
+    const upgrades = useSelector((state: AppState) => state.upgrades.upgrades);
 
     return {
         router,
@@ -25,5 +26,6 @@ export const useSetup = () => {
         firstVisit,
         refresh,
         tasks,
+        upgrades,
     };
 };

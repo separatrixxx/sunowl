@@ -8,13 +8,15 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { Modal } from '../../Common/Modal/Modal';
 import { UpgradesModal } from '../UpgradesModal/UpgradesModal';
+import { payUpgrade } from '../../../helpers/upgrades.helper';
 import cn from 'classnames';
 
 
-export const UpgradesBlock = ({ spins, nextSpins, priceTon, priceStars, isFinal }: UpgradesBlockProps): JSX.Element => {
-    const { router, tgUser } = useSetup();
+export const UpgradesBlock = ({ spins, nextSpins, priceStars, isFinal }: UpgradesBlockProps): JSX.Element => {
+    const { router, dispatch, webApp, tgUser } = useSetup();
 
     const [isActive, setIsActive] = useState<boolean>(false);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     return (
         <>
@@ -33,14 +35,22 @@ export const UpgradesBlock = ({ spins, nextSpins, priceTon, priceStars, isFinal 
                         </Htag>
                 }
                 {
-                    !isFinal ?
+                    !isFinal && nextSpins ?
                         <>
-                            <Button className={styles.upgradesButton}
+                            {/* <Button className={styles.upgradesButton}
                                 text={setLocale(tgUser?.language_code).pay_ton.replace('$$$', String(priceTon))}
-                                type='primary' onClick={() => setIsActive(true)} />
+                                type='primary' onClick={() => setIsActive(true)} /> */}
                             <Button className={styles.upgradesButton}
                                 text={setLocale(tgUser?.language_code).pay + ' ' + priceStars + ' '}
-                                type='primary' isStars={true} onClick={() => setIsActive(true)} />
+                                isLoading={isLoading} type='primary' isStars={true}
+                                onClick={() => payUpgrade({
+                                    dispatch: dispatch,
+                                    webApp: webApp,
+                                    tgUser: tgUser,
+                                    spins: nextSpins,
+                                    setIsLoading: setIsLoading,
+                                    setIsActive: setIsActive,
+                                })} />
                         </>
                     :
                         <Button className={cn(styles.upgradesButton, styles.finalButton)}
@@ -57,7 +67,7 @@ export const UpgradesBlock = ({ spins, nextSpins, priceTon, priceStars, isFinal 
                     priority={true}
                 />
             </div>
-            <Modal title={setLocale(tgUser?.language_code).succesfully_bought}
+            <Modal title={setLocale(tgUser?.language_code).invoice_requested}
                 isActive={isActive} setIsActive={setIsActive} >
                 <UpgradesModal spins={nextSpins || 0} setIsActive={setIsActive} />
             </Modal>

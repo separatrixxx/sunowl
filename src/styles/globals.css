@@ -30,7 +30,7 @@ a {
 	font-family: 'Komika Axis';
 	font-weight: 400;
 	font-style: normal;
-	src: local('Komika Axis'), url('https://fonts.cdnfonts.com/s/251/KOMIKAX_.woff') format('woff');
+	src: local('Komika Axis'), url('/KOMIKAX.woff') format('woff');
 }
 
 :root {

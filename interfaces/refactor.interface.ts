@@ -14,3 +14,9 @@ export interface ClaimArguments extends BaseArguments {
     setIsLoading: (e: boolean) => void,
     setTokens: (e: number) => void,
 }
+
+export interface PayUpgradeArguments extends BaseArguments {
+    spins: number,
+    setIsLoading: (e: boolean) => void,
+    setIsActive: (e: boolean) => void,
+}

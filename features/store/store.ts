@@ -5,6 +5,7 @@ import poolSlice from "../pool/poolSlice";
 import firstVisitSlice from "../firstVisit/firstVisitSlice";
 import refreshSlice from "../refresh/refreshSlice";
 import tasksSlice from "../tasks/tasksSlice";
+import upgradesSlice from "../upgrades/upgradesSlice";
 
 
 const makeStore = () =>
@@ -15,6 +16,7 @@ const makeStore = () =>
       firstVisit: firstVisitSlice,
       refresh: refreshSlice,
       tasks: tasksSlice,
+      upgrades: upgradesSlice,
     },
     devTools: true,
 });

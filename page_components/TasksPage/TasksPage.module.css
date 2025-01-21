@@ -7,7 +7,7 @@
 	padding: 24px 0;
 	padding-bottom: 78px;
 	justify-items: center;
-	grid-template-rows: repeat(2, auto) 1fr;
+	grid-template-rows: repeat(6, auto) 1fr;
 	gap: 6px;
 }
 

@@ -24,9 +24,9 @@ export const ConnectItem = ({ type, title, text, isConnected, onClick }: Connect
                     </Htag>
                     {
                         !isConnected &&
-                        <Htag tag='s' className={styles.connectText}>
-                            {text}
-                        </Htag>
+                            <Htag tag='s' className={styles.connectText}>
+                                {text}
+                            </Htag>
                     }
                 </div>
                 <Button className={cn(styles.connectButton, {
