@@ -29,6 +29,7 @@ export interface TaskInterface {
     timestamp_start: string,
     timestamp_end: string | null,
     completed: boolean,
+    redirect_url: string,
 }
 
 export interface ClaimTaskGroupInterface {

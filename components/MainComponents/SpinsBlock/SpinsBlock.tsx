@@ -7,9 +7,8 @@ import { setLocale } from '../../../helpers/locale.helper';
 import { useSetup } from '../../../hooks/useSetup';
 
 
-export const SpinsBlock = ({ tokens, setTokens }: SpinsBlockProps): JSX.Element => {
+export const SpinsBlock = ({ tokens }: SpinsBlockProps): JSX.Element => {
     const { tgUser } = useSetup();
-    console.log(tokens)
     
     const [firstDigit, setFirstDigit] = useState<number>(0);
     const [secondDigit, setSecondDigit] = useState<number>(0);

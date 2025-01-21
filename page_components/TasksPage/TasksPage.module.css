@@ -7,8 +7,20 @@
 	padding: 24px 0;
 	padding-bottom: 78px;
 	justify-items: center;
-	grid-template-rows: repeat(6, auto) 1fr;
+	grid-template-rows: repeat(7, auto) 1fr;
 	gap: 6px;
+}
+
+.tasksTitle1 {
+	margin-bottom: 12px;
+}
+
+.tasksTitle2 {
+	margin-top: 12px;
+}
+
+.tasksTitle3 {
+	margin-top: 18px;
 }
 
 .tasksText {

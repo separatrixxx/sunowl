@@ -38,7 +38,7 @@ export const MainBlock = (): JSX.Element => {
                         <Htag tag='l' className={styles.mustSubscribed}>
                             {setLocale(tgUser?.language_code).to_start_you_must_subscribed}
                         </Htag>
-                    : <SpinsBlock tokens={tokens} setTokens={setTokens} />
+                    : <SpinsBlock tokens={tokens} />
                 }
                 <MainButton text={setLocale(tgUser?.language_code)[
                     spinsLeft === 0 ? 'no_more_spins' :

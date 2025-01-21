@@ -20,3 +20,8 @@ export interface PayUpgradeArguments extends BaseArguments {
     setIsLoading: (e: boolean) => void,
     setIsActive: (e: boolean) => void,
 }
+
+export interface CheckTaskArguments extends BaseArguments {
+    taskId: string,
+    setIsLoading: (e: boolean) => void,
+}

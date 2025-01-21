@@ -31,6 +31,35 @@
 	fill: var(--white);
 }
 
+.clickFrame {
+	cursor: pointer;
+	transition-duration: 300ms;
+}
+
+.clickFrame:active,
+.weba:hover {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	filter: brightness(0.9);
+}
+
+.spinner {
+	width: 15px;
+	height: 15px;
+	margin: 0.6px 0;
+
+	animation: spin 1s linear infinite;
+
+	border: 3px solid transparent;
+	border-top: 3px solid var(--white) !important;
+	border-radius: 50%;
+}
+
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
 @media (max-width: 300px) {
 	.frameButton {
 		padding: 8.5px 28.5px;

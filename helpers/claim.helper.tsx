@@ -11,17 +11,13 @@ export async function claimTokens(args: ClaimArguments) {
     setTokens(0);
 
     try {
-        // await axios.post(process.env.NEXT_PUBLIC_DOMAIN +
-        //     '/api/claims', {
-        //         user_id : tgUser?.id,
-        //         event_by: "claims_game"
-        //     }).then(r => {
-        //         setTokens(r.data.token_claimed);
-        //     });
-
-        setTimeout(() => {
-            setTokens(395);
-        }, 100);
+        await axios.post(process.env.NEXT_PUBLIC_DOMAIN +
+            '/api/claims', {
+                user_id : tgUser?.id,
+                event_by: "claims_game"
+            }).then(r => {
+                setTokens(r.data.data.token_claimed);
+            });
 
         dispatch(changeUser(true));
         dispatch(changePool(true));
