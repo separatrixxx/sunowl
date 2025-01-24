@@ -17,11 +17,14 @@
 }
 
 .taskItemButton {
-	width: 70px !important;
+	justify-items: center;
+
+	width: 80px !important;
+	padding: 7px 5px;
 }
 
 .frameButton {
-	padding: 9.5px 0 !important;
+	padding: 12.5px 0 !important;
 }
 
 .errorButton {

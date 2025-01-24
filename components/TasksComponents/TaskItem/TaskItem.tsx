@@ -26,7 +26,10 @@ export const TaskItem = ({ taskId, type, text, link }: TaskItemProps): JSX.Eleme
             </Htag>
             {
                 !isClick && type === 'active' ?
-                    <Button className={styles.taskItemButton} text={setLocale(tgUser?.language_code).go}
+                    <Button className={styles.taskItemButton} text={setLocale(tgUser?.language_code)[
+                        text.toLowerCase().includes('like') ? 'like' :
+                        text.toLowerCase().includes('share') ? 'share' : 'go'
+                    ]}
                         type='primary' onClick={() => {
                             if (!isClick) {
                                 webApp?.openLink(link);
@@ -42,6 +45,7 @@ export const TaskItem = ({ taskId, type, text, link }: TaskItemProps): JSX.Eleme
                             webApp: webApp,
                             tgUser: tgUser,
                             taskId: taskId,
+                            setIsClick: setIsClick,
                             setIsLoading: setIsLoading,
                         })} />
                 : type === 'completed' ?

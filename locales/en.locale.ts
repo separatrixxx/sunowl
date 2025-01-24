@@ -95,4 +95,6 @@ export const en = {
     checking_task: "Checking the task",
     task_not_completed: "Task not completed. Please, retry the task",
     task_successfully_completed: "The task was successfully completed",
+    like: "LIKE",
+    share: "SHARE",
 };

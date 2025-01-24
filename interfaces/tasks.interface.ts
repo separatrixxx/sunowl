@@ -25,11 +25,12 @@ export interface TaskInterface {
     status: 'active' | 'completed' | 'expired' | 'upcoming',
     tag: string,
     reward: number,
-    verification: any,
+    verification: {
+        url_to_redirect: string,
+    },
     timestamp_start: string,
     timestamp_end: string | null,
     completed: boolean,
-    redirect_url: string,
 }
 
 export interface ClaimTaskGroupInterface {

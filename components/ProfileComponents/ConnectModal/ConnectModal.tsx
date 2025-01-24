@@ -10,7 +10,7 @@ import { MainButton } from '../../Buttons/MainButton/MainButton';
 export const ConnectModal = ({ type, text, onClick, setIsActive }: ConnectModalProps): JSX.Element => {
     const { tgUser } = useSetup();
 
-    const image = (type === 'ton_wallet' ? '/TonImage.webp' : '/TronImage.webp')
+    const image = (type === 'ton_wallet' ? '/TonImage.webp' : '/TronImage.webp');
 
     return (
         <>

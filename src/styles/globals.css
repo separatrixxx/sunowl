@@ -33,6 +33,41 @@ a {
 	src: local('Komika Axis'), url('/KOMIKAX.woff') format('woff');
 }
 
+.go3974562317 {
+	height: 52px !important;
+	padding: 4px 20px !important;
+
+	border-radius: 26px !important;
+	background-color: var(--primary) !important;
+}
+
+.go3162878564 {
+	transition: transform 0.3s ease-in-out !important;
+}
+
+.go3974562317 > svg {
+	display: none !important;
+}
+
+.go1651228014 {
+	color: var(--white) !important;
+
+	font-family: var(--font-family) !important;
+}
+
+.go1487791704 {
+	font-family: var(--font-family) !important;
+}
+
+.go3974562317:active,
+.go3974562317:hover {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+
+	filter: brightness(0.9) !important;
+
+	transform: scale(1) !important;
+}
+
 :root {
 	--primary: #EF3C40;
 	--lightPrimary: #FF595D;

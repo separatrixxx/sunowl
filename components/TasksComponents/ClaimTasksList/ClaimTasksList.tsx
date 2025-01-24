@@ -13,7 +13,7 @@ export const ClaimTasksList = (): JSX.Element => {
         <div className={styles.tasksList}>
             {allTasks.map(t => (
                 <TaskItem key={t.task_id} taskId={t.task_id} type={!t.completed ? 'active' : 'completed'}
-                    text={t.description} link={t.redirect_url} />
+                    text={t.description} link={t.verification.url_to_redirect} />
             ))}
         </div>
     );

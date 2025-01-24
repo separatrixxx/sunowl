@@ -13,6 +13,12 @@ import { ClaimTasksList } from '../../components/TasksComponents/ClaimTasksList/
 
 export const TasksPage = (): JSX.Element => {
     const { tgUser, firstVisit, tasks } = useSetup();
+    
+    const tasksCompleted = Object.values(tasks.data.claim_tasks.groups)
+        .reduce((total, group) => total + group.completed_count, 0);
+
+    const tasksRequired = 15;
+    const tasksCount = tasksCompleted % tasksRequired;
 
     return (
         <>
@@ -43,7 +49,7 @@ export const TasksPage = (): JSX.Element => {
                             <Htag tag='s' className={styles.tasksText}>
                                 {setLocale(tgUser.language_code).tasks_text}
                             </Htag>
-                            <TasksProgress tasksCount={8} />
+                            <TasksProgress tasksRequired={tasksRequired} tasksCount={tasksCount} />
                             <ClaimTasksList />
                             <Navbar />
                         </>

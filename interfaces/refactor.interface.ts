@@ -23,5 +23,6 @@ export interface PayUpgradeArguments extends BaseArguments {
 
 export interface CheckTaskArguments extends BaseArguments {
     taskId: string,
+    setIsClick: (e: boolean) => void,
     setIsLoading: (e: boolean) => void,
 }

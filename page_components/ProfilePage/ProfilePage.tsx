@@ -8,8 +8,8 @@ import { WithdrawBlock } from '../../components/ProfileComponents/WithdrawBlock/
 import { StatsList } from '../../components/ProfileComponents/StatsList/StatsList';
 import Image from 'next/image';
 import { StickersBlock } from '../../components/ProfileComponents/StickersBlock/StickersBlock';
-import { ConnectList } from '../../components/ProfileComponents/ConnectList/ConnectList';
 import { UpgradesBlock } from '../../components/ProfileComponents/UpgradesBlock/UpgradesBlock';
+import { ConnectTon } from '../../components/ProfileComponents/ConnectTonButton/ConnectTonButton';
 
 
 export const ProfilePage = (): JSX.Element => {
@@ -31,7 +31,6 @@ export const ProfilePage = (): JSX.Element => {
     const nextSpins = isFinal || currentLevelIndex === -1 ? undefined : levels[currentLevelIndex + 1]?.spins ?? null;
     const upgradePrice = isFinal || currentLevelIndex === -1 ? undefined : levels[currentLevelIndex + 1]?.price ?? null;
     
-
     return (
         <>
             <div className={styles.wrapper}>
@@ -59,7 +58,7 @@ export const ProfilePage = (): JSX.Element => {
                             <WithdrawBlock />
                             <StatsList />
                             <div className={styles.profileDiv}>
-                                <ConnectList />
+                                <ConnectTon />
                                 <UpgradesBlock spins={currentSpins} nextSpins={nextSpins}
                                     priceStars={upgradePrice} isFinal={isFinal} />
                                 <StickersBlock />

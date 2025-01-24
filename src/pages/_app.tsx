@@ -7,6 +7,7 @@ import { setLocale } from '../../helpers/locale.helper';
 import { wrapper } from '../../features/store/store';
 import { Provider } from 'react-redux';
 import { TelegramProvider } from '../../layout/TelegramProvider';
+import { TonConnectUIProvider } from '@tonconnect/ui-react';
 
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -14,19 +15,21 @@ export default function App({ Component, pageProps }: AppProps) {
   const { store } = wrapper.useWrappedStore(pageProps);
 
   return (
-    <Provider store={store}>
-      <TelegramProvider>
-        <Head>
-          <title>{setLocale(router.locale).sunowl}</title>
-          <meta name='description' content={setLocale(router.locale).sunowl} />
-          <meta property='og:title' content={setLocale(router.locale).sunowl} />
-          <meta property='og:description' content={setLocale(router.locale).sunowl} />
-          <meta charSet="utf-8" />
-          <link rel="icon" href="/logo.svg" type="image/svg+xml" />
-          <script async src="https://telegram.org/js/telegram-web-app.js"></script>
-        </Head>
-        <Component {...pageProps} />
-      </TelegramProvider>
-    </Provider>
+    <TonConnectUIProvider manifestUrl="https://vavilen.vercel.app/tonconnect-manifest.json">
+      <Provider store={store}>
+        <TelegramProvider>
+          <Head>
+            <title>{setLocale(router.locale).sunowl}</title>
+            <meta name='description' content={setLocale(router.locale).sunowl} />
+            <meta property='og:title' content={setLocale(router.locale).sunowl} />
+            <meta property='og:description' content={setLocale(router.locale).sunowl} />
+            <meta charSet="utf-8" />
+            <link rel="icon" href="/logo.svg" type="image/svg+xml" />
+            <script async src="https://telegram.org/js/telegram-web-app.js"></script>
+          </Head>
+          <Component {...pageProps} />
+        </TelegramProvider>
+      </Provider>
+    </TonConnectUIProvider >
   );
 }

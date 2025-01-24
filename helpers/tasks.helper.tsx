@@ -7,7 +7,6 @@ import { setTasks } from "../features/tasks/tasksSlice";
 import { ToastError, ToastSuccess } from "../components/Common/Toast/Toast";
 
 
-
 export async function getTasks(args: BaseArguments) {
     const { dispatch, webApp, tgUser } = args;
 
@@ -24,23 +23,27 @@ export async function getTasks(args: BaseArguments) {
 }
 
 export async function checkTasks(args: CheckTaskArguments) {
-    const { dispatch, webApp, tgUser, taskId, setIsLoading } = args;
+    const { dispatch, webApp, tgUser, taskId, setIsClick, setIsLoading } = args;
 
     setIsLoading(true);
 
     try {
         await axios.post(process.env.NEXT_PUBLIC_DOMAIN +
             `/api/tasks/${tgUser?.id}/check/${taskId}`).then(r => {
+                if (r.data.data) {
+                    ToastSuccess(setLocale(tgUser?.language_code).task_successfully_completed);
+                } else {
+                    ToastError(setLocale(tgUser?.language_code).task_not_completed);
+                }
+
                 dispatch(changeTasks(true));
                 dispatch(changeUser(true));
-
-                ToastError(setLocale(tgUser?.language_code).task_not_completed);
-                ToastSuccess(setLocale(tgUser?.language_code).task_successfully_completed);
             });
     } catch (err: any) {
         webApp?.showAlert(setLocale(tgUser?.language_code).errors.check_task_error);
         console.error(err);
     } finally {
+        setIsClick(false);
         setIsLoading(false);
     }
 }
