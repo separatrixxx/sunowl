@@ -97,4 +97,7 @@ export const en = {
     task_successfully_completed: "The task was successfully completed",
     like: "LIKE",
     share: "SHARE",
+    auth_success: "Auth success",
+    your_x_authorized: "Your X is authorized, you can return to the app",
+    back: "BACK",
 };

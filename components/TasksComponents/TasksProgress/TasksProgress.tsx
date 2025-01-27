@@ -5,8 +5,10 @@ import { Htag } from '../../Common/Htag/Htag';
 import { setLocale } from '../../../helpers/locale.helper';
 
 
-export const TasksProgress = ({ tasksRequired, tasksCount }: TasksProgressProps): JSX.Element => {
+export const TasksProgress = ({ tasksData }: TasksProgressProps): JSX.Element => {
     const { tgUser } = useSetup();
+
+    const { tasksRequired, tasksCount } = tasksData;
 
     const progressWidth = (tasksCount / tasksRequired) * 100;
 

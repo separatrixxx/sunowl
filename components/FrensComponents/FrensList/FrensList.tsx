@@ -3,12 +3,14 @@ import { useSetup } from '../../../hooks/useSetup';
 import Image from 'next/image';
 import { Htag } from '../../Common/Htag/Htag';
 import { setLocale } from '../../../helpers/locale.helper';
-import cn from 'classnames';
 import { FrensItem } from '../FrensItem/FrensItem';
+import cn from 'classnames';
 
 
 export const FrensList = (): JSX.Element => {
     const { tgUser, user } = useSetup();
+
+    console.log(user.data.statistics.referral_details)
 
     return (
         <div className={cn(styles.frensList, {

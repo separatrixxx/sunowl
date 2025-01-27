@@ -12,8 +12,10 @@ import { payUpgrade } from '../../../helpers/upgrades.helper';
 import cn from 'classnames';
 
 
-export const UpgradesBlock = ({ spins, nextSpins, priceStars, isFinal }: UpgradesBlockProps): JSX.Element => {
+export const UpgradesBlock = ({ spinsData }: UpgradesBlockProps): JSX.Element => {
     const { router, dispatch, webApp, tgUser } = useSetup();
+
+    const { currentSpins, nextSpins, upgradePrice, isFinal } = spinsData;
 
     const [isActive, setIsActive] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -22,8 +24,8 @@ export const UpgradesBlock = ({ spins, nextSpins, priceStars, isFinal }: Upgrade
         <>
             <div className={styles.upgradesBlock}>
                 <Htag tag='l'>
-                    {setLocale(tgUser?.language_code)[spins === 1 ? 'you_have_spin_per_day' : 'you_have_spins_per_day']
-                        .replace('$$$', String(spins))}
+                    {setLocale(tgUser?.language_code)[currentSpins === 1 ? 'you_have_spin_per_day' : 'you_have_spins_per_day']
+                        .replace('$$$', String(currentSpins))}
                 </Htag>
                 <Htag tag='s' className={styles.upgradesText}>
                     {setLocale(tgUser?.language_code)[!isFinal ? 'upgrade_text' : 'reached_maximum_daily_spins']}
@@ -41,7 +43,7 @@ export const UpgradesBlock = ({ spins, nextSpins, priceStars, isFinal }: Upgrade
                                 text={setLocale(tgUser?.language_code).pay_ton.replace('$$$', String(priceTon))}
                                 type='primary' onClick={() => setIsActive(true)} /> */}
                             <Button className={styles.upgradesButton}
-                                text={setLocale(tgUser?.language_code).pay + ' ' + priceStars + ' '}
+                                text={setLocale(tgUser?.language_code).pay + ' ' + upgradePrice + ' '}
                                 isLoading={isLoading} type='primary' isStars={true}
                                 onClick={() => payUpgrade({
                                     dispatch: dispatch,

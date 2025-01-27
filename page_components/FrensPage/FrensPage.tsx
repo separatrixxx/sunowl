@@ -11,10 +11,14 @@ import { Modal } from '../../components/Common/Modal/Modal';
 import { FrensModal } from '../../components/FrensComponents/FrensModal/FrensModal';
 import { MainLink } from '../../components/MainComponents/MainLink/MainLink';
 import { Preloader } from '../../components/PreloaderComponents/Preloader/Preloader';
+import { FrensDataInterface } from '../../interfaces/data.interface';
+import { getFrensData } from '../../helpers/data.helper';
 
 
 export const FrensPage = (): JSX.Element => {
     const { tgUser, user, firstVisit } = useSetup();
+
+    const frensData: FrensDataInterface = getFrensData(user);
 
     const [isActive, setIsActive] = useState<boolean>(false);
 
@@ -38,8 +42,10 @@ export const FrensPage = (): JSX.Element => {
                                     user.data.statistics.total_friends === 0 ?
                                         setLocale(tgUser.language_code).invite_frens :
                                         <>
-                                           {`${user.data.statistics.total_friends} ${setLocale(tgUser.language_code).frens}. `}
-                                            <span className={styles.verifiedFrens}>{`${user.data.statistics.authorized_friends} ${setLocale(tgUser.language_code).verified}`}</span>
+                                           {`${frensData.totalFrens} ${setLocale(tgUser.language_code).frens}. `}
+                                            <span className={styles.verifiedFrens}>
+                                                {`${frensData.authorizedFrens} ${setLocale(tgUser.language_code).verified}`}
+                                            </span>
                                         </>
                                 }
                             </Htag>

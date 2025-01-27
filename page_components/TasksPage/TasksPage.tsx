@@ -9,16 +9,14 @@ import { Preloader } from '../../components/PreloaderComponents/Preloader/Preloa
 import { TasksList } from '../../components/TasksComponents/TasksList/TasksList';
 import { TasksProgress } from '../../components/TasksComponents/TasksProgress/TasksProgress';
 import { ClaimTasksList } from '../../components/TasksComponents/ClaimTasksList/ClaimTasksList';
+import { TasksDataInterface } from '../../interfaces/data.interface';
+import { getTasksData } from '../../helpers/data.helper';
 
 
 export const TasksPage = (): JSX.Element => {
     const { tgUser, firstVisit, tasks } = useSetup();
     
-    const tasksCompleted = Object.values(tasks.data.claim_tasks.groups)
-        .reduce((total, group) => total + group.completed_count, 0);
-
-    const tasksRequired = 15;
-    const tasksCount = tasksCompleted % tasksRequired;
+    const tasksData: TasksDataInterface = getTasksData(tasks);
 
     return (
         <>
@@ -49,7 +47,7 @@ export const TasksPage = (): JSX.Element => {
                             <Htag tag='s' className={styles.tasksText}>
                                 {setLocale(tgUser.language_code).tasks_text}
                             </Htag>
-                            <TasksProgress tasksRequired={tasksRequired} tasksCount={tasksCount} />
+                            <TasksProgress tasksData={tasksData} />
                             <ClaimTasksList />
                             <Navbar />
                         </>

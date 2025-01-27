@@ -1,9 +1,7 @@
 import { DetailedHTMLProps, HTMLAttributes } from 'react';
+import { SpinsDataInterface } from '../../../interfaces/data.interface';
 
 
 export interface UpgradesBlockProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-    spins: number,
-    nextSpins?: number,
-    priceStars?: number,
-    isFinal: boolean,
+    spinsData: SpinsDataInterface,
 }
