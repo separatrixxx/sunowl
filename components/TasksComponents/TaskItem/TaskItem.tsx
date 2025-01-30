@@ -108,8 +108,12 @@ export const TaskItem = ({ taskId, type, text, link, tags, isRaid, endTime }: Ta
                     ]}
                         type='primary' onClick={() => {
                             if (!isClick) {
-                                webApp?.openLink(link);
-
+                                if (text.toLowerCase().includes('telegram')) {
+                                    webApp?.openTelegramLink(link);
+                                } else {
+                                    webApp?.openLink(link);
+                                }
+                                
                                 ToastSuccess(setLocale(tgUser?.language_code).checking_task);
                                 setIsClick(true);
                             }

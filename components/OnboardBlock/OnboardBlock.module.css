@@ -3,7 +3,7 @@
 	align-items: end;
 
 	width: 100%;
-	height: calc(100vh - 48px);
+	height: calc(100vh - 68px);
 	grid-template-rows: 1fr repeat(2, auto);
 	gap: 24px;
 	justify-items: center;
