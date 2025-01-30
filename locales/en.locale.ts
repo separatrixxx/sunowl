@@ -100,4 +100,9 @@ export const en = {
     auth_success: "Auth success",
     your_x_authorized: "Your X is authorized, you can return to the app",
     back: "BACK",
+    copy_tags: "COPY TAGS",
+    tags_copied: "Tags copied",
+    tags_were_not_copied: "Tags were not copied",
+    raid_task_ends_in: "RAID TASK ENDS IN",
+    this_task_costs_like_2_tasks: "This task costs like 2 tasks",
 };

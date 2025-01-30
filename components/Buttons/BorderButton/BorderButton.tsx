@@ -6,14 +6,16 @@ import { useSetup } from '../../../hooks/useSetup';
 import cn from 'classnames';
 
 
-export const BorderButton = ({ text, className, onClick }: BorderButtonProps): JSX.Element => {
+export const BorderButton = ({ text, isPrimary, className, onClick }: BorderButtonProps): JSX.Element => {
     const { webApp } = useSetup();
 
     return (
         <button className={cn(styles.borderButton, className, {
-            [styles.weba]: isWebPlatform(webApp?.platform),
+            [styles.weba]: !isPrimary && isWebPlatform(webApp?.platform),
+            [styles.primaryButton]: isPrimary,
+            [styles.primaryWeba]: isPrimary && isWebPlatform(webApp?.platform),
         })} onClick={onClick}>
-            <Htag tag='s'>
+            <Htag tag='s' className={styles.text}>
                 {text}
             </Htag>
         </button>

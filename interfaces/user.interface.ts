@@ -15,6 +15,7 @@ export interface UserInterface {
         daily_login_log: any,
         login_count: number,
         task_open_count: number,
+        task_delimeter: number,
         statistics: StatisticsInterface,
         auth_requirements?: AuthRequirementsInterface,
         optional_connections?: OptionalConnectionsInterface,

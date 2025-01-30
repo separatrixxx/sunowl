@@ -12,6 +12,26 @@
 	gap: 16px;
 }
 
+.taskDiv {
+	display: grid;
+	gap: 20px;
+	justify-items: left;
+}
+
+.raidDiv {
+	display: grid;
+	gap: 4px;
+	justify-items: left;
+}
+
+.raidDiv > h1 {
+	color: var(--raidText);
+}
+
+.raidText {
+	font-family: "Comic Neue", serif !important;
+}
+
 .missedText {
 	color: var(--missedText);
 }
@@ -29,4 +49,8 @@
 
 .errorButton {
 	filter: brightness(0.6);
+}
+
+.tags {
+	color: var(--tagsText);
 }

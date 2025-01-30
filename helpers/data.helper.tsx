@@ -32,7 +32,7 @@ export function getTasksData(tasks: TasksInterface): TasksDataInterface {
     const tasksCompleted = Object.values(tasks.data.claim_tasks.groups)
         .reduce((total, group) => total + group.completed_count, 0);
 
-    const tasksRequired = 15;
+    const tasksRequired = tasks.task_delimeter;
     const tasksCount = tasksCompleted % tasksRequired;
 
     return {

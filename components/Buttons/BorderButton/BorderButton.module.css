@@ -26,6 +26,16 @@
 	filter: brightness(0.9);
 }
 
+.primaryButton:active,
+.primaryWeba:hover {
+	outline-color: var(--lightPrimary) !important;
+}
+
 .text {
 	transition-duration: 300ms;
+}
+
+.primaryButton:active > .text,
+.primaryWeba:hover > .text {
+	color: var(--lightPrimary) !important;
 }

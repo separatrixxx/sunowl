@@ -19,6 +19,7 @@ const userData: UserInterface = {
         daily_login_log: {},
         login_count: 0,
         task_open_count: 0,
+        task_delimeter: 0,
         statistics: {
             claimed_total: 0,
             claimed_count: 0,

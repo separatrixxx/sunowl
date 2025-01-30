@@ -34,20 +34,14 @@ export const TasksPage = (): JSX.Element => {
                                 }}
                             />
                             <Htag tag='l' className={styles.tasksTitle1}>
-                                {setLocale(tgUser.language_code).event_tasks}
-                            </Htag>
-                            <TasksList type='event' />
-                            <Htag tag='l' className={styles.tasksTitle2}>
-                                {setLocale(tgUser.language_code).raid_tasks}
-                            </Htag>
-                            <TasksList type='raid' />
-                            <Htag tag='l' className={styles.tasksTitle3}>
-                                {setLocale(tgUser.language_code).claim_tasks}
+                                {setLocale(tgUser.language_code).tasks}
                             </Htag>
                             <Htag tag='s' className={styles.tasksText}>
                                 {setLocale(tgUser.language_code).tasks_text}
                             </Htag>
                             <TasksProgress tasksData={tasksData} />
+                            <TasksList type='event' />
+                            <TasksList type='raid' />
                             <ClaimTasksList />
                             <Navbar />
                         </>

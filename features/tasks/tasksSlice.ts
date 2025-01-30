@@ -4,6 +4,7 @@ import { TasksInterface } from '../../interfaces/tasks.interface';
 
 const tasksData: TasksInterface = {
     status: '',
+    task_delimeter: 0,
     data: {
         event_tasks: {
             active: [],
