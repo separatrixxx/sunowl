@@ -2,8 +2,8 @@
 	display: grid;
 	align-items: center;
 
-	width: calc(100% - 40px);
-	padding: 20px;
+	width: calc(100% - 60px);
+	padding: 20px 30px;
 
 	border-radius: 40px;
 	background: var(--modal);

@@ -4,7 +4,7 @@
 
 	display: grid;
 	overflow: hidden;
-	align-items: center;
+	align-items: end;
 
 	width: calc(100% - 64px);
 	padding: 32px;

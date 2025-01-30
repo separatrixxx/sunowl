@@ -10,8 +10,6 @@ import cn from 'classnames';
 export const FrensList = (): JSX.Element => {
     const { tgUser, user } = useSetup();
 
-    console.log(user.data.statistics.referral_details)
-
     return (
         <div className={cn(styles.frensList, {
             [styles.noFrensList]: user.data.statistics.total_friends === 0,

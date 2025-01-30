@@ -19,6 +19,7 @@
 
 .noFrensList {
 	align-items: end;
+	align-self: center;
 
 	margin-bottom: 70px;
 }

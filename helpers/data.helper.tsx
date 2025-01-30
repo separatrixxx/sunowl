@@ -14,12 +14,11 @@ export function getSpinsData(upgrades: UpgradesInterface): SpinsDataInterface {
             level: parseInt(level.replace('level_', ''), 10),
             ...upgrade
         }))
-        .sort((a, b) => a.spins - b.spins);
+        .sort((a, b) => a.spins - b.spins).filter(l => l.available);
     
-    const currentLevelIndex = levels.findIndex(level => level.spins === currentSpins);
-    const isFinal = currentLevelIndex === levels.length - 1;
-    const nextSpins = isFinal || currentLevelIndex === -1 ? undefined : levels[currentLevelIndex + 1]?.spins ?? null;
-    const upgradePrice = isFinal || currentLevelIndex === -1 ? undefined : levels[currentLevelIndex + 1]?.price ?? null;
+    const isFinal = levels.length === 0;
+    const nextSpins = levels[0].spins;
+    const upgradePrice = levels[0].price;
 
     return {
         currentSpins,

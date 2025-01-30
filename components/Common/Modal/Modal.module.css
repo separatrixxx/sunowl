@@ -25,6 +25,7 @@
 	width: calc(100vw - 52px);
 
 	padding: 20px 26px;
+	padding-bottom: 40px;
 
 	border-radius: 26px 26px 0 0;
 	background: var(--modal);
