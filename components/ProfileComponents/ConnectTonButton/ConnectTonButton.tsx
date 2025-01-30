@@ -1,36 +1,60 @@
 import styles from './ConnectTonButton.module.css';
-import { TonConnectButton, useTonWallet } from '@tonconnect/ui-react';
+import { useTonConnectUI, useTonWallet } from '@tonconnect/ui-react';
 import { useSetup } from '../../../hooks/useSetup';
 import { Htag } from '../../Common/Htag/Htag';
 import { setLocale } from '../../../helpers/locale.helper';
-import { useResizeW } from '../../../hooks/useResize';
+import { Button } from '../../Buttons/Button/Button';
+import { useState } from 'react';
+import { Modal } from '../../Common/Modal/Modal';
+import { ConnectModal } from '../ConnectModal/ConnectModal';
+import cn from 'classnames';
 
 
 export const ConnectTon = () => {
     const { tgUser } = useSetup();
 
     const wallet = useTonWallet();
-    const width = useResizeW();
+    const [tonConnectUI] = useTonConnectUI();
 
-    const slice = width > 450 ? 15 : 6;
+    const [isActive, setIsActive] = useState<boolean>(false);
 
     return (
-        <div className={styles.connectItem}>
-            <div className={styles.connectTextDiv}>
-                <Htag tag='s'>
-                    {wallet && wallet.account.address ?
-                        setLocale(tgUser?.language_code).wallet_connected + ':\n' +
-                        wallet.account.address.slice(0, slice) + '...' + wallet.account.address.slice(-4) :
-                        setLocale(tgUser?.language_code).connect_ton_wallet}
-                </Htag>
-                {
-                    !(wallet && wallet.account.address) &&
-                        <Htag tag='s' className={styles.connectText}>
-                            {setLocale(tgUser?.language_code).you_will_need_it_ton_wallet}
-                        </Htag>
-                }
+        <>
+            <div className={styles.connectItem}>
+                <div className={styles.connectTextDiv}>
+                    <Htag tag='s'>
+                        {wallet && wallet.account.address ?
+                            setLocale(tgUser?.language_code).wallet_connected + ':\n' +
+                            wallet.account.address.slice(0, 15) + '...' + wallet.account.address.slice(-4) :
+                            setLocale(tgUser?.language_code).connect_ton_wallet}
+                    </Htag>
+                    {
+                        !(wallet && wallet.account.address) &&
+                            <Htag tag='s' className={styles.connectText}>
+                                {setLocale(tgUser?.language_code).you_will_need_it_ton_wallet}
+                            </Htag>
+                    }
+                </div>
+                <Button className={cn(styles.connectButton, {
+                    [styles.connectedButton]: wallet,
+                })} text={setLocale(tgUser?.language_code).connect}
+                    type='primary' isIcon={Boolean(wallet)}
+                    onClick={() => {
+                        if (!wallet) {
+                            setIsActive(true);
+                        } else {
+                            tonConnectUI.disconnect();
+                        }
+                    }} />
             </div>
-            <TonConnectButton />
-        </div>
+            <Modal title={setLocale(tgUser?.language_code).connect_wallet}
+                isActive={isActive} setIsActive={setIsActive} >
+                <ConnectModal type='ton_wallet' text={setLocale(tgUser?.language_code).ton_wallet_modal_text}
+                    onClick={() => {
+                        tonConnectUI.openModal();
+                        setIsActive(false);
+                    }} setIsActive={setIsActive} />
+            </Modal>
+        </>
     );
 };

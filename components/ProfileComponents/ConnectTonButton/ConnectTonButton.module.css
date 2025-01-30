@@ -25,6 +25,14 @@
 	font-family: "Comic Neue", serif !important;
 }
 
+.connectButton {
+	padding: 10px 20px;
+}
+
+.connectedButton {
+	padding: 17.5px 24px;
+}
+
 @media (max-width: 380px) {
 	.connectItem {
 		width: calc(100% - 48px);
