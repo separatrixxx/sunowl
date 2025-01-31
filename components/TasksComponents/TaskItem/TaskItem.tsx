@@ -12,6 +12,7 @@ import { BorderButton } from '../../Buttons/BorderButton/BorderButton';
 import { copyToClipboard } from '../../../helpers/clipboard.helper';
 import { changeTasks } from '../../../features/refresh/refreshSlice';
 import cn from 'classnames';
+import { isWebPlatform } from '../../../helpers/platform.helper';
 
 
 export const TaskItem = ({ taskId, type, text, link, tags, isRaid, endTime }: TaskItemProps): JSX.Element => {
@@ -108,7 +109,7 @@ export const TaskItem = ({ taskId, type, text, link, tags, isRaid, endTime }: Ta
                     ]}
                         type='primary' onClick={() => {
                             if (!isClick) {
-                                if (text.toLowerCase().includes('telegram')) {
+                                if (text.toLowerCase().includes('telegram') && !isWebPlatform(webApp?.platform)) {
                                     webApp?.openTelegramLink(link);
                                 } else {
                                     webApp?.openLink(link);
