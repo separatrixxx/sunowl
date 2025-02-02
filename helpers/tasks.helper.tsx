@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import { setLocale } from "./locale.helper";
-import { BaseArguments, CheckTaskArguments } from "../interfaces/refactor.interface";
+import { BaseArguments, CheckTaskArguments, StartTaskArguments } from "../interfaces/refactor.interface";
 import { UserInterface } from "../interfaces/user.interface";
 import { changeTasks, changeUser } from "../features/refresh/refreshSlice";
 import { setTasks } from "../features/tasks/tasksSlice";
@@ -11,9 +11,9 @@ export async function getTasks(args: BaseArguments) {
     const { dispatch, webApp, tgUser } = args;
 
     try {
-        const { data : response }: AxiosResponse<UserInterface> = await axios.get(process.env.NEXT_PUBLIC_DOMAIN +
+        const { data: response }: AxiosResponse<UserInterface> = await axios.get(process.env.NEXT_PUBLIC_DOMAIN +
             '/api/tasks/' + tgUser?.id);
-            
+
         dispatch(setTasks(response));
         dispatch(changeTasks(false));
     } catch (err: any) {
@@ -45,5 +45,24 @@ export async function checkTasks(args: CheckTaskArguments) {
     } finally {
         setIsClick(false);
         setIsLoading(false);
+    }
+}
+
+export async function startTask(args: StartTaskArguments) {
+    const { webApp, tgUser, text, link, isTwitter, isClick, setIsClick, setIsActive, isWebPlatform  } = args;
+
+    if (text.toLowerCase().includes('twitter') && !(isTwitter ? isTwitter['twitter'] : false)) {
+        setIsActive(true);
+    } else {
+        if (!isClick) {
+            if (text.toLowerCase().includes('telegram') && !isWebPlatform(webApp?.platform)) {
+                webApp?.openTelegramLink(link);
+            } else {
+                webApp?.openLink(link);
+            }
+
+            ToastSuccess(setLocale(tgUser?.language_code).checking_task);
+            setIsClick(true);
+        }
     }
 }

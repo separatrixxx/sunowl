@@ -10,7 +10,7 @@ import { getUpgrades } from "./upgrades.helper";
 
 export async function getUser(args: BaseArguments) {
     const { dispatch, webApp, tgUser } = args;
-
+    
     try {
         const { data : response }: AxiosResponse<UserInterface> = await axios.get(process.env.NEXT_PUBLIC_DOMAIN +
             '/api/users/' + tgUser?.id);

@@ -1,0 +1,11 @@
+.howMuchItem {
+	display: grid;
+
+	width: 100%;
+	gap: 4px;
+	justify-items: left;
+}
+
+.text {
+	font-family: "Comic Neue", serif !important;
+}

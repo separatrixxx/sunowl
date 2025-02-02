@@ -1,0 +1,16 @@
+.howMuchModalText {
+	width: 90%;
+	margin-bottom: 8px;
+
+	text-align: center;
+
+	font-family: "Comic Neue", serif !important;
+}
+
+.howMuchModalText > span {
+	color: var(--yellow);
+}
+
+.howMuchModalButton {
+	margin-top: 16px;
+}

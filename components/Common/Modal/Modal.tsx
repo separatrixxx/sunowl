@@ -1,7 +1,7 @@
 import { ModalProps } from './Modal.props';
 import styles from './Modal.module.css';
 import { motion } from 'framer-motion';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { Htag } from '../Htag/Htag';
 import { isWebPlatform } from '../../../helpers/platform.helper';
 import { useSetup } from '../../../hooks/useSetup';
@@ -11,6 +11,8 @@ import cn from 'classnames';
 
 export const Modal = ({ title, isActive, setIsActive, children, className }: ModalProps): JSX.Element => {
     const { webApp } = useSetup();
+    
+    const headerRef = useRef<HTMLDivElement>(null);
 
     const variants = {
         visible: {
@@ -44,10 +46,32 @@ export const Modal = ({ title, isActive, setIsActive, children, className }: Mod
         };
     }, [setIsActive]);
 
+    useEffect(() => {
+        const handleScroll = () => {
+            if (isActive) {
+                setIsActive(false);
+            }
+        };
+
+        const handleClickOutside = (event: MouseEvent) => {
+            if (headerRef.current && !headerRef.current.contains(event.target as Node)) {
+                setIsActive(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        document.addEventListener('mousedown', handleClickOutside);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [isActive, setIsActive]);
+
     return (
         <motion.div className={cn(styles.modal, {
             [styles.active]: isActive,
-        })} onClick={() => setIsActive(false)}
+        })} ref={headerRef} onClick={() => setIsActive(false)}
             variants={variants}
             initial={isActive ? 'visible' : 'hidden'}
             transition={{ duration: 0.15 }}

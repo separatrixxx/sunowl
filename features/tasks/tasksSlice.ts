@@ -18,6 +18,14 @@ const tasksData: TasksInterface = {
         claim_tasks: {
             groups: {},
         },
+        statistics: {
+            completed_by_type: {
+                event: 0,
+                raid: 0,
+                claim: 0,
+            },
+            total_completed: 0,
+        },
     },
 };
 

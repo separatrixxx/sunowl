@@ -16,7 +16,7 @@ export const TasksProgress = ({ tasksData }: TasksProgressProps): JSX.Element =>
         <div className={styles.tasksProgress}>
             <Htag tag="s">
                 {setLocale(tgUser?.language_code)[
-                    tasksCount < tasksRequired ? 'get_spin_for_task_done' : 'tas_done_your_points_ready'
+                    tasksCount !== tasksRequired ? 'get_spin_for_task_done' : 'tas_done_your_points_ready'
                 ]}
             </Htag>
             <div className={styles.progressDiv}>

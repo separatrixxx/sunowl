@@ -1,0 +1,15 @@
+.image {
+	width: 20%;
+	height: fit-content;
+
+	object-fit: cover;
+}
+
+.connectTwitterModalText {
+	width: 70%;
+	margin-bottom: 4px;
+
+	text-align: center;
+
+	font-family: "Comic Neue", serif !important;
+}

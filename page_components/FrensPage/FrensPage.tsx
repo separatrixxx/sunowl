@@ -13,6 +13,8 @@ import { MainLink } from '../../components/MainComponents/MainLink/MainLink';
 import { Preloader } from '../../components/PreloaderComponents/Preloader/Preloader';
 import { FrensDataInterface } from '../../interfaces/data.interface';
 import { getFrensData } from '../../helpers/data.helper';
+import { BorderButton } from '../../components/Buttons/BorderButton/BorderButton';
+import { HowMuchModal } from '../../components/FrensComponents/HowMuchModal/HowMuchModal';
 
 
 export const FrensPage = (): JSX.Element => {
@@ -21,6 +23,7 @@ export const FrensPage = (): JSX.Element => {
     const frensData: FrensDataInterface = getFrensData(user);
 
     const [isActive, setIsActive] = useState<boolean>(false);
+    const [isActive2, setIsActive2] = useState<boolean>(false);
 
     return (
         <>
@@ -52,6 +55,8 @@ export const FrensPage = (): JSX.Element => {
                             <Htag tag='s' className={styles.frensText}>
                                 {setLocale(tgUser.language_code).invite_frens_text}
                             </Htag>
+                            <BorderButton text={setLocale(tgUser.language_code).how_much_spins_for_frens + '?'}
+                                isPrimary={true} onClick={() => setIsActive2(true)} />
                             <FrensList />
                             <MainButton className={styles.frensButton}
                                 text={setLocale(tgUser.language_code).invite_frens} type='primary'
@@ -60,6 +65,10 @@ export const FrensPage = (): JSX.Element => {
                             <Modal title={setLocale(tgUser.language_code).invite_a_fren}
                                 isActive={isActive} setIsActive={setIsActive} >
                                 <FrensModal setIsActive={setIsActive} />
+                            </Modal>
+                            <Modal title={setLocale(tgUser.language_code).how_much_spins + '?'}
+                                isActive={isActive2} setIsActive={setIsActive2} >
+                                <HowMuchModal setIsActive={setIsActive2} />
                             </Modal>
                         </>
                     : <Preloader />

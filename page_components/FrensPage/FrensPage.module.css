@@ -6,12 +6,13 @@
 	min-height: calc(100vh - 48px);
 	padding: 24px 0;
 	justify-items: center;
-	grid-template-rows: repeat(2, auto) 1fr auto;
+	grid-template-rows: repeat(3, auto) 1fr auto;
 	gap: 6px;
 }
 
 .frensText {
 	width: 85%;
+	margin-bottom: 14px;
 
 	text-align: center;
 
@@ -21,8 +22,11 @@
 }
 
 .frensButton {
+	position: fixed;
+	z-index: 8;
+	bottom: 110px;
+
 	width: 85% !important;
-	margin-bottom: 86px;
 }
 
 .verifiedFrens {

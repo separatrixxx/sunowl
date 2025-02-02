@@ -61,6 +61,17 @@
 	color: var(--darkText);
 }
 
+.noShadow {
+	box-shadow: none !important;
+}
+
+.noShadow:active,
+.webaShadow:hover {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	filter: brightness(0.8);
+}
+
 .spinner {
 	width: 20px;
 	height: 20px;

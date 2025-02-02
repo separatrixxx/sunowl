@@ -7,20 +7,27 @@ import { setLocale } from '../../../helpers/locale.helper';
 import { FrameButton } from '../../Buttons/FrameButton/FrameButton';
 import { useEffect, useState } from 'react';
 import { ToastSuccess } from '../../Common/Toast/Toast';
-import { checkTasks } from '../../../helpers/tasks.helper';
+import { checkTasks, startTask } from '../../../helpers/tasks.helper';
 import { BorderButton } from '../../Buttons/BorderButton/BorderButton';
 import { copyToClipboard } from '../../../helpers/clipboard.helper';
 import { changeTasks } from '../../../features/refresh/refreshSlice';
-import cn from 'classnames';
 import { isWebPlatform } from '../../../helpers/platform.helper';
+import { Modal } from '../../Common/Modal/Modal';
+import { ConnectTwitterModal } from '../ConnectTwitterModal/ConnectTwitterModal';
+import cn from 'classnames';
+import { RaidBlock } from '../RaidBlock/RaidBlock';
+import { TagsBlock } from '../TagsBlock/TagsBlock';
 
 
 export const TaskItem = ({ taskId, type, text, link, tags, isRaid, endTime }: TaskItemProps): JSX.Element => {
-    const { dispatch, webApp, tgUser } = useSetup();
+    const { dispatch, webApp, tgUser, user } = useSetup();
 
     const [isClick, setIsClick] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [timeRemaining, setTimeRemaining] = useState<string>('');
+    const [isActive, setIsActive] = useState<boolean>(false);
+
+    const isTwitter = user.data.authentication.find(auth => auth.hasOwnProperty('twitter'));
 
     useEffect(() => {
         let timer: NodeJS.Timeout;
@@ -68,73 +75,56 @@ export const TaskItem = ({ taskId, type, text, link, tags, isRaid, endTime }: Ta
     }, [endTime, dispatch]);
 
     return (
-        <div className={styles.taskItem}>
-            <div className={styles.taskDiv}>
-                <Htag tag='s' className={cn({
-                    [styles.missedText]: type === 'missed',
-                })}>
-                    {text}
+        <>
+            <div className={styles.taskItem}>
+                <div className={styles.taskDiv}>
+                    <Htag tag='s' className={cn({
+                        [styles.missedText]: type !== 'active',
+                    })}>
+                        {text}
+                        {
+                            tags &&
+                                <span className={styles.tags}>
+                                    {tags.reduce((t, acc) => t + ' ' + acc, '')}
+                                </span>
+                        }
+                    </Htag>
                     {
-                        tags &&
-                            <span className={styles.tags}>
-                                {tags.reduce((t, acc) => t + ' ' + acc, '')}
-                            </span>
+                        tags && <TagsBlock type={type} tags={tags} />
                     }
-                </Htag>
+                    {
+                        isRaid && <RaidBlock type={type} timeRemaining={timeRemaining} />
+                    }
+                </div>
                 {
-                    tags &&
-                        <BorderButton text={setLocale(tgUser?.language_code).copy_tags}
-                            isPrimary={true} onClick={() => copyToClipboard(tags.reduce((t, acc) => t + ' ' + acc, ''),
-                                setLocale(tgUser?.language_code).tags_copied,
-                                setLocale(tgUser?.language_code).tags_were_not_copied)} />
-                }
-                {
-                    isRaid &&
-                        <div className={styles.raidDiv}>
-                            <Htag tag='s'>
-                                {'🔥 ' + setLocale(tgUser?.language_code).raid_task_ends_in + ' ' + timeRemaining}
-                            </Htag>
-                            <Htag tag='s' className={styles.raidText}>
-                                {setLocale(tgUser?.language_code).this_task_costs_like_2_tasks}
-                            </Htag>
-                        </div>
-                }
-            </div>
-            {
-                !isClick && type === 'active' ?
-                    <Button className={styles.taskItemButton} text={setLocale(tgUser?.language_code)[
-                        (text.toLowerCase().includes('like') ||
-                            text.toLowerCase().includes('reactions')) ? 'like' :
-                            text.toLowerCase().includes('share') ? 'share' : 'go'
-                    ]}
-                        type='primary' onClick={() => {
-                            if (!isClick) {
-                                if (text.toLowerCase().includes('telegram') && !isWebPlatform(webApp?.platform)) {
-                                    webApp?.openTelegramLink(link);
-                                } else {
-                                    webApp?.openLink(link);
-                                }
-                                
-                                ToastSuccess(setLocale(tgUser?.language_code).checking_task);
-                                setIsClick(true);
-                            }
-                        }} />
-                    : isClick && type === 'active' ?
-                        <FrameButton className={cn(styles.taskItemButton, styles.frameButton)}
-                            type='pending' isLoading={isLoading} onClick={() => checkTasks({
-                                dispatch: dispatch,
-                                webApp: webApp,
-                                tgUser: tgUser,
-                                taskId: taskId,
-                                setIsClick: setIsClick,
-                                setIsLoading: setIsLoading,
-                            })} />
-                        : type === 'completed' ?
+                    !isClick && type === 'active' ?
+                        <Button className={styles.taskItemButton} text={setLocale(tgUser?.language_code)[
+                            (text.toLowerCase().includes('like') ||
+                                text.toLowerCase().includes('reactions')) ? 'like' :
+                                text.toLowerCase().includes('share') ? 'share' : 'go'
+                        ]} type='primary' onClick={() => startTask({webApp, tgUser, text, link, isTwitter,
+                            isClick, setIsClick, setIsActive, isWebPlatform})} />
+                        : isClick && type === 'active' ?
                             <FrameButton className={cn(styles.taskItemButton, styles.frameButton)}
-                                type='ok' />
+                                type='pending' isLoading={isLoading} onClick={() => checkTasks({
+                                    dispatch: dispatch,
+                                    webApp: webApp,
+                                    tgUser: tgUser,
+                                    taskId: taskId,
+                                    setIsClick: setIsClick,
+                                    setIsLoading: setIsLoading,
+                                })} />
+                            : type === 'completed' ?
+                                <FrameButton className={cn(styles.taskItemButton, styles.frameButton)}
+                                    type='ok' />
                             : <FrameButton className={cn(styles.taskItemButton, styles.frameButton, styles.errorButton)}
                                 type='error' />
-            }
-        </div>
+                }
+            </div>
+            <Modal title={setLocale(tgUser?.language_code).connect_twitter}
+                isActive={isActive} setIsActive={setIsActive} >
+                <ConnectTwitterModal setIsActive={setIsActive} />
+            </Modal>
+        </>
     );
 };

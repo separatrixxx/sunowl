@@ -1,0 +1,11 @@
+.raidDiv > h1 {
+	color: var(--raidText);
+}
+
+.missedDiv {
+	filter: brightness(0.7);
+}
+
+.raidText {
+	font-family: "Comic Neue", serif !important;
+}

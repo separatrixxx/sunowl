@@ -5,10 +5,12 @@ import ErrorIcon from './error.svg';
 import { useSetup } from '../../../hooks/useSetup';
 import { isWebPlatform } from '../../../helpers/platform.helper';
 import cn from 'classnames';
+import { Htag } from '../../Common/Htag/Htag';
+import { setLocale } from '../../../helpers/locale.helper';
 
 
 export const FrameButton = ({ type, isLoading, className, onClick }: FrameButtonProps): JSX.Element => {
-    const { webApp } = useSetup();
+    const { webApp, tgUser } = useSetup();
 
     let Icon = OkIcon;
 
@@ -24,8 +26,12 @@ export const FrameButton = ({ type, isLoading, className, onClick }: FrameButton
             [styles.clickFrame]: onClick,
         })} onClick={onClick}>
             {
-                !isLoading ?
+                !isLoading && type !== 'pending' ?
                     <Icon />
+                : type === 'pending' ?
+                    <Htag tag='s'>
+                        {setLocale(tgUser?.language_code).check}
+                    </Htag>
                 : <div className={styles.spinner} />
             }
             

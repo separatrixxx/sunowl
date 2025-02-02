@@ -29,17 +29,13 @@ export function getSpinsData(upgrades: UpgradesInterface): SpinsDataInterface {
 }
 
 export function getTasksData(tasks: TasksInterface): TasksDataInterface {
-    const eventTasksCompleted = tasks.data.event_tasks.completed.length;
-    const raidTasksCompleted = tasks.data.raid_tasks.completed.length;
-    const claimTasksCompleted = Object.values(tasks.data.claim_tasks.groups)
-        .reduce((total, group) => total + group.completed_count, 0);
-
+    const tesksCompleted = tasks.data.statistics.total_completed;
     const tasksRequired = tasks.task_delimeter;
-    const tasksCount = (eventTasksCompleted + raidTasksCompleted + claimTasksCompleted) % tasksRequired;
+    const tasksCount = tesksCompleted % tasksRequired;
 
     return {
         tasksRequired,
-        tasksCount,
+        tasksCount: (tasksCount === 0 && tesksCompleted) ? tasksRequired : tasksCount,
     };
 }
 

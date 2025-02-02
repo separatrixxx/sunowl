@@ -7,6 +7,7 @@
 	margin: 28px 0;
 	justify-items: center;
 	gap: 10px;
+	margin-bottom: 170px;
 }
 
 .image {
@@ -21,5 +22,5 @@
 	align-items: end;
 	align-self: center;
 
-	margin-bottom: 70px;
+	margin-bottom: 200px;
 }

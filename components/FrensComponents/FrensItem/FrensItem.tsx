@@ -15,7 +15,6 @@ export const FrensItem = ({ photo, name, isVerified }: FrensItemProps): JSX.Elem
     const { tgUser } = useSetup();
 
     const frenPhoto = getPhoto(photo);
-    console.log(frenPhoto)
 
     let Icon = VerifiedIcon;
 

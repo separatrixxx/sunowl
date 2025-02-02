@@ -10,3 +10,11 @@
 .frensModalText > span {
 	color: var(--yellow);
 }
+
+.frensModalButton {
+	margin-bottom: 20px;
+}
+
+.frensModal2 {
+	padding-bottom: 200px;
+}

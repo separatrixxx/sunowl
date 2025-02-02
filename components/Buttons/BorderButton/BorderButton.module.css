@@ -35,6 +35,19 @@
 	transition-duration: 300ms;
 }
 
+.disabledButton,
+.disabledButton:active {
+	cursor: default;
+	filter: brightness(0.7);
+
+	outline: 3px solid var(--white) !important;
+}
+
+.disabledButton > .text,
+.disabledButton:active > .text {
+	color: var(--white) !important;
+}
+
 .primaryButton:active > .text,
 .primaryWeba:hover > .text {
 	color: var(--lightPrimary) !important;

@@ -39,9 +39,9 @@ export const UpgradesBlock = ({ spinsData }: UpgradesBlockProps): JSX.Element =>
                 {
                     !isFinal && nextSpins ?
                         <>
-                            {/* <Button className={styles.upgradesButton}
-                                text={setLocale(tgUser?.language_code).pay_ton.replace('$$$', String(priceTon))}
-                                type='primary' onClick={() => setIsActive(true)} /> */}
+                            <Button className={styles.upgradesButton}
+                                text={setLocale(tgUser?.language_code).pay_ton.replace('$$$', String(upgradePrice))}
+                                type='primary' onClick={() => setIsActive(true)} />
                             <Button className={styles.upgradesButton}
                                 text={setLocale(tgUser?.language_code).pay + ' ' + upgradePrice + ' '}
                                 isLoading={isLoading} type='primary' isStars={true}

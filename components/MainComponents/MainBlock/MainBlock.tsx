@@ -14,14 +14,15 @@ import { claimTokens } from '../../../helpers/claim.helper';
 
 
 export const MainBlock = (): JSX.Element => {
-    const { dispatch, webApp, tgUser, user } = useSetup();
+    const { dispatch, webApp, tgUser, user, pool } = useSetup();
 
     const [isActive, setIsActive] = useState<boolean>(false);
 
     const spinsLeft = user.data.claims_total;
     const spinsPerDay = user.data.claims_available_per_day;
     const spinsUsedToday = user.data.statistics.claims_used_today;
-    const isDisabled = spinsLeft === 0 || spinsPerDay === spinsUsedToday;
+    const isGameOver = pool.data.tokens_remaining === 0;
+    const isDisabled = spinsLeft === 0 || spinsPerDay === spinsUsedToday || isGameOver;
     const isFullyAuthorized = user.data.fully_authorized;
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -36,7 +37,7 @@ export const MainBlock = (): JSX.Element => {
                 {
                     !isFullyAuthorized ?
                         <Htag tag='l' className={styles.mustSubscribed}>
-                            {setLocale(tgUser?.language_code).to_start_you_must_subscribed}
+                            {setLocale(tgUser?.language_code)[!isGameOver ? 'to_start_you_must_subscribed' : 'game_over']}
                         </Htag>
                     : <SpinsBlock tokens={tokens} />
                 }

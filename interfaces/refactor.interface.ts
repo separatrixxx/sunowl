@@ -1,4 +1,5 @@
 import { IWebApp, ITelegramUser } from "../types/telegram";
+import { AuthenticationInterface } from "./user.interface";
 
 
 export interface ErrorArguments {
@@ -25,4 +26,14 @@ export interface CheckTaskArguments extends BaseArguments {
     taskId: string,
     setIsClick: (e: boolean) => void,
     setIsLoading: (e: boolean) => void,
+}
+
+export interface StartTaskArguments extends Omit<BaseArguments, 'dispatch'> {
+    text: string,
+    link: string,
+    isTwitter?: AuthenticationInterface,
+    isClick: boolean,
+    setIsClick: (e: boolean) => void,
+    setIsActive: (e: boolean) => void,
+    isWebPlatform(platform: string | undefined): boolean,
 }

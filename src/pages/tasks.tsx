@@ -4,14 +4,25 @@ import { setLocale } from "../../helpers/locale.helper";
 import { useSetup } from "../../hooks/useSetup";
 import { useEffect } from "react";
 import { getTasks } from "../../helpers/tasks.helper";
+import { getUser } from "../../helpers/user.helper";
 
 
 function Tasks(): JSX.Element {
     const { router, dispatch, tgUser, webApp, refresh } = useSetup();
 
     useEffect(() => {
+        console.log(refresh)
+
         if (tgUser && refresh.tasks) {
             getTasks({
+                webApp: webApp,
+                dispatch: dispatch,
+                tgUser: tgUser,
+            });
+        }
+
+        if (tgUser && refresh.user) {
+            getUser({
                 webApp: webApp,
                 dispatch: dispatch,
                 tgUser: tgUser,

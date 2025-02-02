@@ -24,15 +24,8 @@
 	justify-items: left;
 }
 
-.raidDiv > h1 {
-	color: var(--raidText);
-}
-
-.raidText {
-	font-family: "Comic Neue", serif !important;
-}
-
-.missedText {
+.missedText,
+.missedText > span {
 	color: var(--missedText);
 }
 

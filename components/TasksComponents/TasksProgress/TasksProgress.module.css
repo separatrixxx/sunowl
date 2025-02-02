@@ -38,3 +38,11 @@
 	border-radius: 40px;
 	background-color: var(--lightGreen);
 }
+
+.tasksProgressButton {
+	position: fixed;
+	z-index: 8;
+	bottom: 110px;
+
+	width: 85% !important;
+}

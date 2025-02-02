@@ -16,6 +16,7 @@ export interface TasksInterface {
                 [group_name: string]: ClaimTaskGroupInterface,
             },
         },
+        statistics: TasksStatisticsInterface,
     },
 }
 
@@ -42,3 +43,13 @@ export interface TaskInterface {
     timestamp_end: string | null,
     completed: boolean,
 }
+
+export interface TasksStatisticsInterface {
+    completed_by_type: {
+        event: number,
+        raid: number,
+        claim: number,
+    },
+    total_completed: number,
+}
+

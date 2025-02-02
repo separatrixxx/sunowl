@@ -12,6 +12,7 @@ export async function getUpgrades(args: BaseArguments) {
     try {
         const { data : response }: AxiosResponse<UserInterface> = await axios.get(process.env.NEXT_PUBLIC_DOMAIN +
             '/api/upgrades/' + tgUser?.id);
+        console.log(response)
             
         dispatch(setUpgrades(response));
     } catch (err: any) {
