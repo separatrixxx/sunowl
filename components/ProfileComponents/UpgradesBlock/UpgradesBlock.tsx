@@ -8,18 +8,23 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { Modal } from '../../Common/Modal/Modal';
 import { UpgradesModal } from '../UpgradesModal/UpgradesModal';
-import { payUpgrade } from '../../../helpers/upgrades.helper';
+import { payTonUpgrade, payStarsUpgrade } from '../../../helpers/upgrades.helper';
+import { useTonWallet, useTonConnectUI } from '@tonconnect/ui-react';
 import cn from 'classnames';
 
 
 export const UpgradesBlock = ({ spinsData }: UpgradesBlockProps): JSX.Element => {
     const { router, dispatch, webApp, tgUser } = useSetup();
 
-    const { currentSpins, nextSpins, upgradePrice, isFinal } = spinsData;
+    const { currentSpins, nextSpins, tonPrice, starsPrice, isFinal } = spinsData;
 
     const [isActive, setIsActive] = useState<boolean>(false);
-    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [isLoading1, setIsLoading1] = useState<boolean>(false);
+    const [isLoading2, setIsLoading2] = useState<boolean>(false);
 
+    const wallet = useTonWallet();
+    const [tonConnectUI] = useTonConnectUI();
+    
     return (
         <>
             <div className={styles.upgradesBlock}>
@@ -40,18 +45,27 @@ export const UpgradesBlock = ({ spinsData }: UpgradesBlockProps): JSX.Element =>
                     !isFinal && nextSpins ?
                         <>
                             <Button className={styles.upgradesButton}
-                                text={setLocale(tgUser?.language_code).pay_ton.replace('$$$', String(upgradePrice))}
-                                type='primary' onClick={() => setIsActive(true)} />
-                            <Button className={styles.upgradesButton}
-                                text={setLocale(tgUser?.language_code).pay + ' ' + upgradePrice + ' '}
-                                isLoading={isLoading} type='primary' isStars={true}
-                                onClick={() => payUpgrade({
-                                    dispatch: dispatch,
-                                    webApp: webApp,
-                                    tgUser: tgUser,
+                                text={setLocale(tgUser?.language_code).pay_ton.replace('$$$', String(tonPrice))}
+                                isLoading={isLoading1} type='primary' onClick={() => payTonUpgrade({
+                                    webApp,
+                                    tgUser,
+                                    wallet,
+                                    tonConnectUI,
                                     spins: nextSpins,
-                                    setIsLoading: setIsLoading,
+                                    price: tonPrice,
+                                    setIsLoading: setIsLoading1,
                                     setIsActive: setIsActive,
+                                })} />
+                            <Button className={styles.upgradesButton}
+                                text={setLocale(tgUser?.language_code).pay + ' ' + starsPrice + ' '}
+                                isLoading={isLoading2} type='primary' isStars={true}
+                                onClick={() => payStarsUpgrade({
+                                    webApp,
+                                    tgUser,
+                                    spins: nextSpins,
+                                    price: starsPrice,
+                                    setIsLoading: setIsLoading2,
+                                    setIsActive,
                                 })} />
                         </>
                     :
@@ -69,7 +83,7 @@ export const UpgradesBlock = ({ spinsData }: UpgradesBlockProps): JSX.Element =>
                     priority={true}
                 />
             </div>
-            <Modal title={setLocale(tgUser?.language_code).invoice_requested}
+            <Modal title={setLocale(tgUser?.language_code).succesfully_bought}
                 isActive={isActive} setIsActive={setIsActive} >
                 <UpgradesModal spins={nextSpins || 0} setIsActive={setIsActive} />
             </Modal>

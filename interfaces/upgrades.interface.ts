@@ -14,6 +14,23 @@ export interface UpgradesInterface {
 export interface UpgradeItem {
     spins: number,
     price: number,
+    ton_price: number,
     description: string,
     available: boolean,
+}
+
+export interface PayRequestInterface {
+    status: string,
+    data: {
+        payment_url?: string,
+        wallet_address?: string,
+        amount: number,
+        currency: string,
+        payment_type: string,
+        upgrade_details: {
+            from_spins: number,
+            to_spins: number,
+            description: string,
+        },
+    },
 }

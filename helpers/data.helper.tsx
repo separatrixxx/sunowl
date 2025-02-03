@@ -18,12 +18,14 @@ export function getSpinsData(upgrades: UpgradesInterface): SpinsDataInterface {
     
     const isFinal = levels.length === 0;
     const nextSpins = levels[0].spins;
-    const upgradePrice = levels[0].price;
+    const tonPrice = levels[0].ton_price;
+    const starsPrice = levels[0].price;
 
     return {
         currentSpins,
         nextSpins,
-        upgradePrice,
+        tonPrice,
+        starsPrice,
         isFinal,
     };
 }

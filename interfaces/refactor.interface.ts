@@ -1,3 +1,4 @@
+import { TonConnectUI, Wallet, WalletInfoWithOpenMethod } from "@tonconnect/ui-react";
 import { IWebApp, ITelegramUser } from "../types/telegram";
 import { AuthenticationInterface } from "./user.interface";
 
@@ -16,8 +17,17 @@ export interface ClaimArguments extends BaseArguments {
     setTokens: (e: number) => void,
 }
 
-export interface PayUpgradeArguments extends BaseArguments {
+export interface PayUpgradeArguments extends Omit<BaseArguments, 'dispatch'> {
+    price: number | undefined,
     spins: number,
+    setIsLoading: (e: boolean) => void,
+    setIsActive: (e: boolean) => void,
+}
+
+export interface PayTonUpgradeArguments extends PayUpgradeArguments {
+    wallet: Wallet | (Wallet & WalletInfoWithOpenMethod) | null,
+    tonConnectUI: TonConnectUI,
+    price: number | undefined,
     setIsLoading: (e: boolean) => void,
     setIsActive: (e: boolean) => void,
 }

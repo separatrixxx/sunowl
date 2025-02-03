@@ -1,7 +1,8 @@
 export interface SpinsDataInterface {
     currentSpins: number,
     nextSpins: number | undefined,
-    upgradePrice: number | undefined,
+    tonPrice: number | undefined,
+    starsPrice: number | undefined,
     isFinal: boolean,
 }
 

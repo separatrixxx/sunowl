@@ -10,24 +10,28 @@ const upgradesData: UpgradesInterface = {
             level_2: {
                 spins: 0,
                 price: 0,
+                ton_price: 0,
                 description: '',
                 available: true,
             },
             level_3: {
                 spins: 0,
                 price: 0,
+                ton_price: 0,
                 description: '',
                 available: true,
             },
             level_4: {
                 spins: 0,
                 price: 0,
+                ton_price: 0,
                 description: '',
                 available: true,
             },
             level_8: {
                 spins: 0,
                 price: 0,
+                ton_price: 0,
                 description: '',
                 available: true,
             },
