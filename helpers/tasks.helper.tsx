@@ -69,7 +69,7 @@ export async function startTask(args: StartTaskArguments) {
             }
 
             if ((isTwitter ? isTwitter['twitter'] : false)) {
-                setTimeout(() => setIsClick(true), 15000);
+                setTimeout(() => setIsClick(true), 20000);
             } else {
                 setIsClick(true);
             }

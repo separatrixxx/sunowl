@@ -7,10 +7,13 @@ import { ToastError } from "../components/Common/Toast/Toast";
 import BigNumber from 'bignumber.js';
 import { PayRequestInterface } from "../interfaces/upgrades.interface";
 import * as crypto from 'crypto';
+import { changeUser } from "../features/refresh/refreshSlice";
 
 
 export async function getUpgrades(args: BaseArguments) {
     const { dispatch, webApp, tgUser } = args;
+
+    console.log('gg')
 
     try {
         const { data : response }: AxiosResponse<UserInterface> = await axios.get(process.env.NEXT_PUBLIC_DOMAIN +
@@ -24,7 +27,7 @@ export async function getUpgrades(args: BaseArguments) {
 }
 
 export async function payTonUpgrade(args: PayTonUpgradeArguments) {
-    const { webApp, tgUser, wallet, tonConnectUI, spins, price, setIsLoading, setIsActive } = args;
+    const { webApp, tgUser, dispatch, wallet, tonConnectUI, spins, price, setIsLoading, setIsActive } = args;
 
     setIsLoading(true);
 
@@ -57,7 +60,11 @@ export async function payTonUpgrade(args: PayTonUpgradeArguments) {
                     wallet_address: wallet.account.address
                 }
             )
-                .then(() => setIsActive(true))
+                .then(() => {
+                    dispatch(changeUser(true));
+                    setIsActive(true);
+
+                })
                 .catch(e => {
                     ToastError(setLocale(tgUser?.language_code).upgrade_was_not_purchased);
                     console.log(e)
@@ -71,7 +78,7 @@ export async function payTonUpgrade(args: PayTonUpgradeArguments) {
 };
 
 export async function payStarsUpgrade(args: PayUpgradeArguments) {
-    const { webApp, tgUser, spins, setIsLoading, setIsActive } = args;
+    const { webApp, tgUser, dispatch, spins, setIsLoading, setIsActive } = args;
 
     setIsLoading(true);
 
@@ -83,6 +90,7 @@ export async function payStarsUpgrade(args: PayUpgradeArguments) {
 
         webApp?.openInvoice(invoiceLink || '', (status: string) => {
             if (status === 'paid') {
+                dispatch(changeUser(true));
                 setIsActive(true);
             } else {
                 ToastError(setLocale(tgUser?.language_code).upgrade_was_not_purchased);

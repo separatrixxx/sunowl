@@ -6,6 +6,8 @@
 	justify-items: center;
 	padding: 24px 0;
 	grid-template-rows: repeat(3, auto) 1fr;
+
+	background: linear-gradient(180deg, var(--black) 0%, var(--dark) 100%) no-repeat;
 }
 
 .mainTitle {

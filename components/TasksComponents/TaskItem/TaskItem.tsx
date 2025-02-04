@@ -129,8 +129,8 @@ export const TaskItem = ({ taskId, type, text, link, tags, isRaid, endTime }: Ta
                                 text.toLowerCase().includes('share') ? 'share' : 'go']
                             : String(waitTimer)} type='primary' onClick={() => {
                             if ((isTwitter ? isTwitter['twitter'] : false) && isTwitterTask && !isWaiting) {
-                                ToastSuccess(setLocale(tgUser?.language_code).wait_15_seconds);
-                                setWaitTimer(15);
+                                ToastSuccess(setLocale(tgUser?.language_code).wait_20_seconds);
+                                setWaitTimer(20);
                                 setIsWaiting(true);
                             }
                             

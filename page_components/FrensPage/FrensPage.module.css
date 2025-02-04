@@ -8,6 +8,8 @@
 	justify-items: center;
 	grid-template-rows: repeat(3, auto) 1fr auto;
 	gap: 6px;
+
+	background: linear-gradient(180deg, var(--black) 0%, var(--dark) 100%) no-repeat;
 }
 
 .frensText {
@@ -25,8 +27,12 @@
 	position: fixed;
 	z-index: 8;
 	bottom: 110px;
+	left: 50%;
 
 	width: 85% !important;
+	height: auto;
+
+	transform: translateX(-50%);
 }
 
 .verifiedFrens {

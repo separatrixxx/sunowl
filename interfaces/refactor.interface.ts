@@ -17,7 +17,7 @@ export interface ClaimArguments extends BaseArguments {
     setTokens: (e: number) => void,
 }
 
-export interface PayUpgradeArguments extends Omit<BaseArguments, 'dispatch'> {
+export interface PayUpgradeArguments extends BaseArguments {
     price: number | undefined,
     spins: number,
     setIsLoading: (e: boolean) => void,

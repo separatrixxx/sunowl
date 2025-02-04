@@ -7,6 +7,8 @@
 	height: 100vh;
 
 	transition-duration: 300ms;
+
+	background: linear-gradient(180deg, var(--black) 0%, var(--dark) 100%) no-repeat;
 }
 
 .errorPage > a {

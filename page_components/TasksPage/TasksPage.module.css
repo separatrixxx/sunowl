@@ -9,6 +9,8 @@
 	justify-items: center;
 	grid-template-rows: repeat(5, auto) 1fr;
 	gap: 6px;
+
+	background: linear-gradient(180deg, var(--black) 0%, var(--dark) 100%) no-repeat;
 }
 
 .tasksTitle1 {

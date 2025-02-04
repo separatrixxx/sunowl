@@ -49,6 +49,7 @@ export const UpgradesBlock = ({ spinsData }: UpgradesBlockProps): JSX.Element =>
                                 isLoading={isLoading1} type='primary' onClick={() => payTonUpgrade({
                                     webApp,
                                     tgUser,
+                                    dispatch,
                                     wallet,
                                     tonConnectUI,
                                     spins: nextSpins,
@@ -62,6 +63,7 @@ export const UpgradesBlock = ({ spinsData }: UpgradesBlockProps): JSX.Element =>
                                 onClick={() => payStarsUpgrade({
                                     webApp,
                                     tgUser,
+                                    dispatch,
                                     spins: nextSpins,
                                     price: starsPrice,
                                     setIsLoading: setIsLoading2,

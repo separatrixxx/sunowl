@@ -18,6 +18,36 @@ export const TelegramProvider = ({ children }: { children: React.ReactNode }) =>
   const [webApp, setWebApp] = useState<IWebApp | null>(null);
 
   useEffect(() => {
+    if (typeof window !== "undefined") {
+      const updateHeight = () => {
+        if (window.visualViewport) {
+          document.body.style.height = `${window.visualViewport.height}px`;
+        }
+      };
+  
+      const preventScroll = () => {
+        if (window.scrollY > 0) {
+          window.scrollTo(0, 0);
+        }
+      };
+  
+      if (window.visualViewport) {
+        window.visualViewport.addEventListener("resize", updateHeight);
+        updateHeight();
+      }
+  
+      window.addEventListener("scroll", preventScroll);
+  
+      return () => {
+        if (window.visualViewport) {
+          window.visualViewport.removeEventListener("resize", updateHeight);
+        }
+        window.removeEventListener("scroll", preventScroll);
+      };
+    }
+  }, []);  
+
+  useEffect(() => {
     const app = (window as any).Telegram?.WebApp;
 
     if (app) {
