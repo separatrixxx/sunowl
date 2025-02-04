@@ -37,7 +37,7 @@ export function getTasksData(tasks: TasksInterface): TasksDataInterface {
 
     return {
         tasksRequired,
-        tasksCount: (tasksCount === 0 && tesksCompleted) ? tasksRequired : tasksCount,
+        tasksCount: tasksCount,
     };
 }
 

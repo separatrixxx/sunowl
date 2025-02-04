@@ -8,19 +8,17 @@ import { FrameButton } from '../../Buttons/FrameButton/FrameButton';
 import { useEffect, useState } from 'react';
 import { ToastSuccess } from '../../Common/Toast/Toast';
 import { checkTasks, startTask } from '../../../helpers/tasks.helper';
-import { BorderButton } from '../../Buttons/BorderButton/BorderButton';
-import { copyToClipboard } from '../../../helpers/clipboard.helper';
 import { changeTasks } from '../../../features/refresh/refreshSlice';
 import { isWebPlatform } from '../../../helpers/platform.helper';
 import { Modal } from '../../Common/Modal/Modal';
 import { ConnectTwitterModal } from '../ConnectTwitterModal/ConnectTwitterModal';
-import cn from 'classnames';
 import { RaidBlock } from '../RaidBlock/RaidBlock';
 import { TagsBlock } from '../TagsBlock/TagsBlock';
+import cn from 'classnames';
 
 
 export const TaskItem = ({ taskId, type, text, link, tags, isRaid, endTime }: TaskItemProps): JSX.Element => {
-    const { dispatch, webApp, tgUser, user } = useSetup();
+    const { dispatch, webApp, tgUser, user, tasks } = useSetup();
 
     const [isClick, setIsClick] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -134,13 +132,10 @@ export const TaskItem = ({ taskId, type, text, link, tags, isRaid, endTime }: Ta
                                 ToastSuccess(setLocale(tgUser?.language_code).wait_15_seconds);
                                 setWaitTimer(15);
                                 setIsWaiting(true);
-
-                                setTimeout(() => startTask({webApp, tgUser, text, link, isTwitter,
-                                    isClick, setIsClick, setIsActive, isWebPlatform}), 15000);
-                            } else {
-                                startTask({webApp, tgUser, text, link, isTwitter,
-                                    isClick, setIsClick, setIsActive, isWebPlatform});
                             }
+                            
+                            startTask({webApp, tgUser, text, link, isTwitter,
+                                isClick, isWaiting, setIsClick, setIsActive, isWebPlatform});
                         }} />
                         : isClick && type === 'active' ?
                             <FrameButton className={cn(styles.taskItemButton, styles.frameButton)}
@@ -148,6 +143,7 @@ export const TaskItem = ({ taskId, type, text, link, tags, isRaid, endTime }: Ta
                                     dispatch: dispatch,
                                     webApp: webApp,
                                     tgUser: tgUser,
+                                    delimeter: tasks.task_delimeter,
                                     taskId: taskId,
                                     setIsClick: setIsClick,
                                     setIsLoading: setIsLoading,

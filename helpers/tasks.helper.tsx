@@ -23,7 +23,7 @@ export async function getTasks(args: BaseArguments) {
 }
 
 export async function checkTasks(args: CheckTaskArguments) {
-    const { dispatch, webApp, tgUser, taskId, setIsClick, setIsLoading } = args;
+    const { dispatch, webApp, tgUser, taskId, delimeter, setIsClick, setIsLoading } = args;
 
     setIsLoading(true);
 
@@ -34,6 +34,9 @@ export async function checkTasks(args: CheckTaskArguments) {
                     ToastSuccess(setLocale(tgUser?.language_code).task_successfully_completed);
                 } else {
                     ToastError(setLocale(tgUser?.language_code).task_not_completed);
+                } if (r.data.prize_alert) {
+                    ToastSuccess(setLocale(tgUser?.language_code).congratulations_you_have_completed_tasks
+                        .replace('$$$', String(delimeter)));
                 }
 
                 dispatch(changeTasks(true));
@@ -49,7 +52,7 @@ export async function checkTasks(args: CheckTaskArguments) {
 }
 
 export async function startTask(args: StartTaskArguments) {
-    const { webApp, tgUser, text, link, isTwitter, isClick, setIsClick, setIsActive, isWebPlatform  } = args;
+    const { webApp, tgUser, text, link, isTwitter, isClick, isWaiting, setIsClick, setIsActive, isWebPlatform  } = args;
 
     if (text.toLowerCase().includes('twitter') && !(isTwitter ? isTwitter['twitter'] : false)) {
         setIsActive(true);
@@ -57,12 +60,19 @@ export async function startTask(args: StartTaskArguments) {
         if (!isClick) {
             if (text.toLowerCase().includes('telegram') && !isWebPlatform(webApp?.platform)) {
                 webApp?.openTelegramLink(link);
-            } else {
+            } else if (!isWaiting) {
                 webApp?.openLink(link);
             }
 
-            ToastSuccess(setLocale(tgUser?.language_code).checking_task);
-            setIsClick(true);
+            if (!isWaiting) {
+                ToastSuccess(setLocale(tgUser?.language_code).checking_task);
+            }
+
+            if ((isTwitter ? isTwitter['twitter'] : false)) {
+                setTimeout(() => setIsClick(true), 15000);
+            } else {
+                setIsClick(true);
+            }
         }
     }
 }

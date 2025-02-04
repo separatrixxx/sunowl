@@ -34,6 +34,7 @@ export interface PayTonUpgradeArguments extends PayUpgradeArguments {
 
 export interface CheckTaskArguments extends BaseArguments {
     taskId: string,
+    delimeter: number,
     setIsClick: (e: boolean) => void,
     setIsLoading: (e: boolean) => void,
 }
@@ -43,6 +44,7 @@ export interface StartTaskArguments extends Omit<BaseArguments, 'dispatch'> {
     link: string,
     isTwitter?: AuthenticationInterface,
     isClick: boolean,
+    isWaiting: boolean,
     setIsClick: (e: boolean) => void,
     setIsActive: (e: boolean) => void,
     isWebPlatform(platform: string | undefined): boolean,
