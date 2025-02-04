@@ -122,4 +122,5 @@ export const en = {
     connect_twitter_text: "Most tasks are on twitter/x, so it's necessary to connect twitter to complete them.",
     connect_ton_wallet_first: "Connect TON wallet first",
     upgrade_was_not_purchased: "The upgrade was not purchased",
+    wait_15_seconds: "Please wait 15 seconds on this page to check the task",
 };
