@@ -5,15 +5,10 @@ import Image from 'next/image';
 import { Htag } from '../../Common/Htag/Htag';
 import { setLocale } from '../../../helpers/locale.helper';
 import { MainButton } from '../../Buttons/MainButton/MainButton';
-import { changeUser } from '../../../features/refresh/refreshSlice';
 
 
 export const UpgradesModal = ({ spins, setIsActive }: UpgradesModalProps): JSX.Element => {
     const { tgUser } = useSetup();
-
-    function dispatch(arg0: any) {
-        throw new Error('Function not implemented.');
-    }
 
     return (
         <>
@@ -40,10 +35,7 @@ export const UpgradesModal = ({ spins, setIsActive }: UpgradesModalProps): JSX.E
                 {setLocale(tgUser?.language_code).you_increased_number_of_spins.replace('$$$', String(spins))}
             </Htag>
             <MainButton className={styles.upgradesButton} text={setLocale(tgUser?.language_code).close}
-                type='black' isSmall={true} onClick={() => {
-                    dispatch(changeUser(true));
-                    setIsActive(false);
-                }} />
+                type='black' isSmall={true} onClick={() => setIsActive(false)} />
         </>
     );
 };

@@ -27,13 +27,13 @@ export async function getUpgrades(args: BaseArguments) {
 export async function payTonUpgrade(args: PayTonUpgradeArguments) {
     const { webApp, tgUser, dispatch, wallet, tonConnectUI, spins, price, setIsLoading, setIsActive } = args;
 
-    setIsLoading(true);
-
     if (!wallet) {
         ToastError(setLocale(tgUser?.language_code).connect_ton_wallet_first);
 
         return;
     }
+
+    setIsLoading(true);
 
     try {
         const { data : response }: AxiosResponse<PayRequestInterface> = await axios.post(process.env.NEXT_PUBLIC_DOMAIN +
@@ -61,7 +61,6 @@ export async function payTonUpgrade(args: PayTonUpgradeArguments) {
                 .then(() => {
                     dispatch(changeUser(true));
                     setIsActive(true);
-
                 })
                 .catch(e => {
                     ToastError(setLocale(tgUser?.language_code).upgrade_was_not_purchased);
