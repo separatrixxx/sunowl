@@ -34,7 +34,7 @@ export const TasksPage = (): JSX.Element => {
                                 }}
                             />
                             <Htag tag='l' className={styles.tasksTitle1}>
-                                {setLocale(tgUser.language_code).tasks}
+                                {setLocale(tgUser.language_code).daily_tasks}
                             </Htag>
                             <Htag tag='s' className={styles.tasksText}>
                                 {setLocale(tgUser.language_code).tasks_text}

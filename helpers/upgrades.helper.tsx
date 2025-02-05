@@ -13,8 +13,6 @@ import { changeUser } from "../features/refresh/refreshSlice";
 export async function getUpgrades(args: BaseArguments) {
     const { dispatch, webApp, tgUser } = args;
 
-    console.log('gg')
-
     try {
         const { data : response }: AxiosResponse<UserInterface> = await axios.get(process.env.NEXT_PUBLIC_DOMAIN +
             '/api/upgrades/' + tgUser?.id);
@@ -67,7 +65,6 @@ export async function payTonUpgrade(args: PayTonUpgradeArguments) {
                 })
                 .catch(e => {
                     ToastError(setLocale(tgUser?.language_code).upgrade_was_not_purchased);
-                    console.log(e)
                 });  
         });
     } catch (error) {

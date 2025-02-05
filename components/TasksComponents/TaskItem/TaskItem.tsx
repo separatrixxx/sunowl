@@ -140,13 +140,13 @@ export const TaskItem = ({ taskId, type, text, link, tags, isRaid, endTime }: Ta
                         : isClick && type === 'active' ?
                             <FrameButton className={cn(styles.taskItemButton, styles.frameButton)}
                                 type='pending' isLoading={isLoading} onClick={() => checkTasks({
-                                    dispatch: dispatch,
-                                    webApp: webApp,
-                                    tgUser: tgUser,
+                                    dispatch,
+                                    webApp,
+                                    tgUser,
                                     delimeter: tasks.task_delimeter,
-                                    taskId: taskId,
-                                    setIsClick: setIsClick,
-                                    setIsLoading: setIsLoading,
+                                    taskId,
+                                    setIsClick,
+                                    setIsLoading,
                                 })} />
                             : type === 'completed' ?
                                 <FrameButton className={cn(styles.taskItemButton, styles.frameButton)}

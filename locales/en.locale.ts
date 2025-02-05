@@ -124,4 +124,8 @@ export const en = {
     upgrade_was_not_purchased: "The upgrade was not purchased",
     wait_20_seconds: "Please wait 20 seconds on this page to check the task",
     congratulations_you_have_completed_tasks: "Congratulations, you have completed $$$/$$$ tasks and received 2 spins!",
+    daily_tasks: "DAILY TASKS",
+    buy_owl_on_sunpump: "BUY OWL ON SUNPUMP",
+    buy_on_sunpump_text: "Visit Sunpump.meme, set the Slippage tolerance to 1-2% and buy the token.",
+    buy_on_sunpump: "BUY ON SUNPUMP",
 };

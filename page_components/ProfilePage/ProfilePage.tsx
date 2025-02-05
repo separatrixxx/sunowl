@@ -12,6 +12,7 @@ import { UpgradesBlock } from '../../components/ProfileComponents/UpgradesBlock/
 import { ConnectTon } from '../../components/ProfileComponents/ConnectTonButton/ConnectTonButton';
 import { SpinsDataInterface } from '../../interfaces/data.interface';
 import { getSpinsData } from '../../helpers/data.helper';
+import { SunPumpBlock } from '../../components/ProfileComponents/SunPumpBlock/SunPumpBlock';
 
 
 export const ProfilePage = (): JSX.Element => {
@@ -49,6 +50,7 @@ export const ProfilePage = (): JSX.Element => {
                                 <ConnectTon />
                                 <UpgradesBlock spinsData={spinsData} />
                                 <StickersBlock />
+                                <SunPumpBlock />
                             </div>
                             <Navbar />
                         </>

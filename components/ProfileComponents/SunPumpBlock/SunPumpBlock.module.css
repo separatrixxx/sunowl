@@ -1,0 +1,27 @@
+.sunPumpBlock {
+	z-index: 1;
+
+	display: grid;
+	align-items: center;
+
+	width: calc(100% - 64px);
+	padding: 32px;
+
+	border-radius: 40px;
+	background: var(--modal);
+	gap: 8px;
+	justify-items: left;
+}
+
+.connectText {
+	margin-bottom: 12px;
+
+	font-family: "Comic Neue", serif !important;
+}
+
+@media (max-width: 380px) {
+	.sunPumpBlock {
+		width: calc(100% - 48px);
+		padding: 24px;
+	}
+}

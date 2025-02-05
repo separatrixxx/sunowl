@@ -11,8 +11,6 @@ function Tasks(): JSX.Element {
     const { router, dispatch, tgUser, webApp, refresh } = useSetup();
 
     useEffect(() => {
-        console.log(refresh)
-
         if (tgUser && refresh.tasks) {
             getTasks({
                 webApp: webApp,
