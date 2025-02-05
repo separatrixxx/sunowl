@@ -24,7 +24,6 @@ export const TaskItem = ({ taskId, type, text, link, tags, isRaid, endTime }: Ta
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [timeRemaining, setTimeRemaining] = useState<string>('');
     const [isActive, setIsActive] = useState<boolean>(false);
-    const [waitTimer, setWaitTimer] = useState<number>(0);
     const [isWaiting, setIsWaiting] = useState<boolean>(false);
 
     const isTwitter = user.data.authentication.find(auth => auth.hasOwnProperty('twitter'));
@@ -76,27 +75,10 @@ export const TaskItem = ({ taskId, type, text, link, tags, isRaid, endTime }: Ta
     }, [endTime, dispatch]);
 
     useEffect(() => {
-        let waitingTimer: NodeJS.Timeout;
-
-        if (isWaiting && waitTimer > 0) {
-            waitingTimer = setInterval(() => {
-                setWaitTimer(prev => {
-                    if (prev <= 1) {
-                        setIsWaiting(false);
-                        setIsClick(true);
-                        return 0;
-                    }
-                    return prev - 1;
-                });
-            }, 1000);
+        if (isTwitter) {
+            setTimeout(() => setIsWaiting(false), 20);
         }
-
-        return () => {
-            if (waitingTimer) {
-                clearInterval(waitingTimer);
-            }
-        };
-    }, [isWaiting, waitTimer]);
+    }, [isTwitter]);
 
     return (
         <>
@@ -122,21 +104,21 @@ export const TaskItem = ({ taskId, type, text, link, tags, isRaid, endTime }: Ta
                 </div>
                 {
                     !isClick && type === 'active' ?
-                        <Button className={styles.taskItemButton} text={!(isTwitterTask && isWaiting) ?
-                            setLocale(tgUser?.language_code)[
+                        <Button className={styles.taskItemButton} text={setLocale(tgUser?.language_code)[
                                 (text.toLowerCase().includes('like') ||
                                 text.toLowerCase().includes('reactions')) ? 'like' :
-                                text.toLowerCase().includes('share') ? 'share' : 'go']
-                            : String(waitTimer)} type='primary' onClick={() => {
-                            if ((isTwitter ? isTwitter['twitter'] : false) && isTwitterTask && !isWaiting) {
-                                ToastSuccess(setLocale(tgUser?.language_code).wait_20_seconds);
-                                setWaitTimer(20);
-                                setIsWaiting(true);
-                            }
-                            
-                            startTask({webApp, tgUser, text, link, isTwitter,
-                                isClick, isWaiting, setIsClick, setIsActive, isWebPlatform});
-                        }} />
+                                text.toLowerCase().includes('share') ? 'share' : 'go']} type='primary' 
+                            isLoading={isWaiting} onClick={() => {
+                                if ((isTwitter ? isTwitter['twitter'] : false) && isTwitterTask && !isWaiting) {
+                                    ToastSuccess(setLocale(tgUser?.language_code).wait_15_seconds);
+                                    setIsWaiting(true);
+
+                                    setTimeout(() => setIsWaiting(false), 15000);
+                                }
+                                
+                                startTask({webApp, tgUser, text, link, isTwitter,
+                                    isClick, isWaiting, setIsClick, setIsActive, isWebPlatform});
+                            }} />
                         : isClick && type === 'active' ?
                             <FrameButton className={cn(styles.taskItemButton, styles.frameButton)}
                                 type='pending' isLoading={isLoading} onClick={() => checkTasks({

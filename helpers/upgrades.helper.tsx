@@ -62,7 +62,7 @@ export async function payTonUpgrade(args: PayTonUpgradeArguments) {
                     dispatch(changeUser(true));
                     setIsActive(true);
                 })
-                .catch(e => {
+                .catch(() => {
                     ToastError(setLocale(tgUser?.language_code).upgrade_was_not_purchased);
                 });  
         });

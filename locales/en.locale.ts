@@ -122,7 +122,7 @@ export const en = {
     connect_twitter_text: "Most tasks are on twitter/x, so it's necessary to connect twitter to complete them.",
     connect_ton_wallet_first: "Connect TON wallet first",
     upgrade_was_not_purchased: "The upgrade was not purchased",
-    wait_20_seconds: "Please wait 20 seconds on this page to check the task",
+    wait_15_seconds: "Please wait 15 seconds on this page to check the task",
     congratulations_you_have_completed_tasks: "Congratulations, you have completed $$$/$$$ tasks and received 2 spins!",
     daily_tasks: "DAILY TASKS",
     buy_owl_on_sunpump: "BUY OWL ON SUNPUMP",

@@ -52,7 +52,7 @@ export async function checkTasks(args: CheckTaskArguments) {
 }
 
 export async function startTask(args: StartTaskArguments) {
-    const { webApp, tgUser, text, link, isTwitter, isClick, isWaiting, setIsClick, setIsActive, isWebPlatform  } = args;
+    const { webApp, tgUser, text, link, isTwitter, isClick, isWaiting, setIsClick, setIsActive, isWebPlatform } = args;
 
     if (text.toLowerCase().includes('twitter') && !(isTwitter ? isTwitter['twitter'] : false)) {
         setIsActive(true);
@@ -68,8 +68,8 @@ export async function startTask(args: StartTaskArguments) {
                 ToastSuccess(setLocale(tgUser?.language_code).checking_task);
             }
 
-            if ((isTwitter ? isTwitter['twitter'] : false)) {
-                setTimeout(() => setIsClick(true), 20000);
+            if (text.toLowerCase().includes('twitter')) {
+                setTimeout(() => setIsClick(true), 15000);
             } else {
                 setIsClick(true);
             }
