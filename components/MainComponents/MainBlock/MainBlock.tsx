@@ -39,12 +39,12 @@ export const MainBlock = (): JSX.Element => {
                         <Htag tag='l' className={styles.mustSubscribed}>
                             {setLocale(tgUser?.language_code)[!isGameOver ? 'to_start_you_must_subscribed' : 'game_over']}
                         </Htag>
-                    : <SpinsBlock tokens={tokens} />
+                        : <SpinsBlock tokens={tokens} />
                 }
                 <MainButton text={setLocale(tgUser?.language_code)[
                     spinsLeft === 0 ? 'no_more_spins' :
-                    spinsUsedToday === spinsPerDay ? 'next_spin_tomorrow' :
-                    'spin_for_tokens'
+                        spinsUsedToday === spinsPerDay ? 'next_spin_tomorrow' :
+                            'spin_for_tokens'
                 ]} type='white' isLoading={isLoading} isDisabled={isDisabled}
                     onClick={() => {
                         if (!isFullyAuthorized) {
@@ -61,7 +61,7 @@ export const MainBlock = (): JSX.Element => {
                     }} />
                 <Htag tag='s' className={styles.spinsAvailable}>
                     {setLocale(tgUser?.language_code).spins_available_for_today +
-                        `: ${(spinsLeft > 0 ? 1 : 0) * (spinsPerDay - spinsUsedToday)}/${spinsPerDay}`}
+                        `: ${Math.min(spinsLeft, Math.max(0, spinsPerDay - spinsUsedToday))}/${spinsPerDay}`}
                 </Htag>
                 <BorderButton text={setLocale(tgUser?.language_code).how_increase_daily_spins + '?'}
                     onClick={() => setIsActive(true)} />
