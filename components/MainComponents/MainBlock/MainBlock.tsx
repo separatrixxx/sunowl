@@ -61,7 +61,7 @@ export const MainBlock = (): JSX.Element => {
                     }} />
                 <Htag tag='s' className={styles.spinsAvailable}>
                     {setLocale(tgUser?.language_code).spins_available_for_today +
-                        `: ${spinsPerDay - spinsUsedToday}/${spinsPerDay}`}
+                        `: ${(spinsLeft > 0 ? 1 : 0) * (spinsPerDay - spinsUsedToday)}/${spinsPerDay}`}
                 </Htag>
                 <BorderButton text={setLocale(tgUser?.language_code).how_increase_daily_spins + '?'}
                     onClick={() => setIsActive(true)} />
