@@ -10,7 +10,7 @@ export const TagsBlock = ({ type, tags }: TagsBlockProps): JSX.Element => {
 
     return (
         <BorderButton text={setLocale(tgUser?.language_code).copy_tags}
-            isPrimary={true} isDisabled={type !== 'active'}
+            isDisabled={type !== 'active'}
             onClick={() => copyToClipboard(tags.reduce((t, acc) => t + ' ' + acc, ''),
                 setLocale(tgUser?.language_code).tags_copied,
                 setLocale(tgUser?.language_code).tags_were_not_copied)} />

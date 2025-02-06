@@ -4,9 +4,9 @@ import OkIcon from './ok.svg';
 import ErrorIcon from './error.svg';
 import { useSetup } from '../../../hooks/useSetup';
 import { isWebPlatform } from '../../../helpers/platform.helper';
-import cn from 'classnames';
 import { Htag } from '../../Common/Htag/Htag';
 import { setLocale } from '../../../helpers/locale.helper';
+import cn from 'classnames';
 
 
 export const FrameButton = ({ type, isLoading, className, onClick }: FrameButtonProps): JSX.Element => {
