@@ -26,7 +26,7 @@ export const FrensModal = ({ setIsActive }: FrensModalProps): JSX.Element => {
             </Htag>
             <BorderButton className={styles.frensModalButton}
                 text={setLocale(tgUser?.language_code).how_much_spins_for_frens + '?'}
-                isPrimary={true} onClick={() => setIsActive2(true)} />
+                onClick={() => setIsActive2(true)} />
             <MainButton text={setLocale(tgUser?.language_code).send_invitation}
                 type='primary' isSmall={true} onClick={() => {
                     shareLink(user.data.refferal_link, '', webApp);

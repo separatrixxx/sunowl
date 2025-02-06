@@ -25,6 +25,7 @@ export const TaskItem = ({ taskId, type, text, link, tags, isRaid, endTime }: Ta
     const [timeRemaining, setTimeRemaining] = useState<string>('');
     const [isActive, setIsActive] = useState<boolean>(false);
     const [isWaiting, setIsWaiting] = useState<boolean>(false);
+    const [isTaskError, setIsTaskError] = useState<boolean>(false);
 
     const isTwitter = user.data.authentication.find(auth => auth.hasOwnProperty('twitter'));
     const isTwitterTask = text.toLowerCase().includes('twitter');
@@ -74,18 +75,13 @@ export const TaskItem = ({ taskId, type, text, link, tags, isRaid, endTime }: Ta
         };
     }, [endTime, dispatch]);
 
-    useEffect(() => {
-        if (isTwitter) {
-            setTimeout(() => setIsWaiting(false), 20);
-        }
-    }, [isTwitter]);
-
     return (
         <>
             <div className={styles.taskItem}>
                 <div className={styles.taskDiv}>
                     <Htag tag='s' className={cn({
                         [styles.missedText]: type !== 'active',
+                        [styles.errorText]: isTaskError,
                     })}>
                         {text}
                         {
@@ -103,7 +99,9 @@ export const TaskItem = ({ taskId, type, text, link, tags, isRaid, endTime }: Ta
                     }
                 </div>
                 {
-                    !isClick && type === 'active' ?
+                    isTaskError ?
+                        <FrameButton className={cn(styles.taskItemButton, styles.frameButton)} type='error' />
+                    : !isClick && type === 'active' ?
                         <Button className={styles.taskItemButton} text={setLocale(tgUser?.language_code)[
                                 (text.toLowerCase().includes('like') ||
                                 text.toLowerCase().includes('reactions')) ? 'like' :
@@ -129,12 +127,13 @@ export const TaskItem = ({ taskId, type, text, link, tags, isRaid, endTime }: Ta
                                     taskId,
                                     setIsClick,
                                     setIsLoading,
+                                    setIsTaskError,
                                 })} />
-                            : type === 'completed' ?
-                                <FrameButton className={cn(styles.taskItemButton, styles.frameButton)}
-                                    type='ok' />
-                            : <FrameButton className={cn(styles.taskItemButton, styles.frameButton, styles.errorButton)}
-                                type='error' />
+                        : type === 'completed' ?
+                            <FrameButton className={cn(styles.taskItemButton, styles.frameButton)}
+                                type='ok' />
+                        : <FrameButton className={cn(styles.taskItemButton, styles.frameButton, styles.errorButton)}
+                            type='error' />
                 }
             </div>
             <Modal title={setLocale(tgUser?.language_code).connect_twitter}

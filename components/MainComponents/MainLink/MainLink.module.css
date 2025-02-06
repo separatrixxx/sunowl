@@ -34,7 +34,7 @@
 .image:active {
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-	filter: brightness(0.9);
+	filter: brightness(0.7);
 }
 
 .mainTitle:hover,

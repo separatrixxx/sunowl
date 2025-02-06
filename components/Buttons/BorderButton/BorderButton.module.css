@@ -20,18 +20,13 @@
 }
 
 .borderButton:active,
-.weba:hover {
-	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-
-	filter: brightness(0.9);
-}
-
-.primaryButton:active,
-.primaryWeba:hover {
-	outline-color: var(--lightPrimary) !important;
+.borderButton:hover {
+	outline-color: var(--lighterPrimary) !important;
 }
 
 .text {
+	margin-bottom: 2px;
+
 	transition-duration: 300ms;
 }
 
@@ -48,7 +43,7 @@
 	color: var(--white) !important;
 }
 
-.primaryButton:active > .text,
-.primaryWeba:hover > .text {
-	color: var(--lightPrimary) !important;
+.borderButton:active > .text,
+.borderButton:hover > .text {
+	color: var(--lighterPrimary) !important;
 }

@@ -37,6 +37,7 @@ export interface CheckTaskArguments extends BaseArguments {
     delimeter: number,
     setIsClick: (e: boolean) => void,
     setIsLoading: (e: boolean) => void,
+    setIsTaskError: (e: boolean) => void,
 }
 
 export interface StartTaskArguments extends Omit<BaseArguments, 'dispatch'> {

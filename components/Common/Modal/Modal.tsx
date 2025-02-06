@@ -12,8 +12,6 @@ import cn from 'classnames';
 export const Modal = ({ title, isActive, setIsActive, children, className }: ModalProps): JSX.Element => {
     const { webApp } = useSetup();
     
-    const headerRef = useRef<HTMLDivElement>(null);
-
     const variants = {
         visible: {
             opacity: 1,
@@ -46,32 +44,10 @@ export const Modal = ({ title, isActive, setIsActive, children, className }: Mod
         };
     }, [setIsActive]);
 
-    useEffect(() => {
-        const handleScroll = () => {
-            if (isActive) {
-                setIsActive(false);
-            }
-        };
-
-        const handleClickOutside = (event: MouseEvent) => {
-            if (headerRef.current && !headerRef.current.contains(event.target as Node)) {
-                setIsActive(false);
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll);
-        document.addEventListener('mousedown', handleClickOutside);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, [isActive, setIsActive]);
-
     return (
         <motion.div className={cn(styles.modal, {
             [styles.active]: isActive,
-        })} ref={headerRef} onClick={() => setIsActive(false)}
+        })} onClick={() => setIsActive(false)}
             variants={variants}
             initial={isActive ? 'visible' : 'hidden'}
             transition={{ duration: 0.15 }}

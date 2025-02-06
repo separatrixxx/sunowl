@@ -22,33 +22,19 @@
 .weba:hover {
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-	filter: brightness(0.9);
+	background: var(--hoverPrimary);
 }
 
 .whiteButton {
 	background: var(--white);
 }
 
+.text {
+	margin-bottom: 4px;
+}
+
 .whiteButton > .text {
 	color: var(--darkText);
-}
-
-.spinner {
-	width: 15px;
-	height: 15px;
-	margin: 0.6px 0;
-	margin: 5px 0;
-
-	animation: spin 1s linear infinite;
-
-	border: 3px solid transparent;
-	border-top: 3px solid var(--white) !important;
-	border-radius: 50%;
-}
-
-.whiteButton > .spinner {
-	border: 3px solid var(--white);
-	border-top: 3px solid var(--darkText) !important;
 }
 
 .crossIcon {
@@ -69,6 +55,25 @@
 	fill: var(--white);
 
 	margin-top: 4px;
+	margin-bottom: 2px;
+}
+
+.spinner {
+	width: 15px;
+	height: 15px;
+	margin: 0.6px 0;
+	margin: 8.1px 0;
+
+	animation: spin 1s linear infinite;
+
+	border: 3px solid transparent;
+	border-top: 3px solid var(--white) !important;
+	border-radius: 50%;
+}
+
+.whiteButton > .spinner {
+	border: 3px solid var(--white);
+	border-top: 3px solid var(--darkText) !important;
 }
 
 @keyframes spin {

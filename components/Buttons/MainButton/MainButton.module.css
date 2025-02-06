@@ -48,17 +48,8 @@
 	box-shadow: 6px 6px 0 0 var(--darkPrimary);
 }
 
-.disabledButton > .text {
-	color: var(--white) !important;
-}
-
 .smallButton {
 	padding: 10px 20px;
-}
-
-.whiteButton > .text,
-.blackButton > .text {
-	color: var(--darkText);
 }
 
 .noShadow {
@@ -70,6 +61,19 @@
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
 	filter: brightness(0.8);
+}
+
+.text {
+	margin-bottom: 4px;
+}
+
+.disabledButton > .text {
+	color: var(--white) !important;
+}
+
+.whiteButton > .text,
+.blackButton > .text {
+	color: var(--darkText);
 }
 
 .spinner {

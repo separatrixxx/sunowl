@@ -13,9 +13,10 @@ import cn from 'classnames';
 
 
 export const SubscribeItem = ({ type, link, isAuth, isBorder }: SubscribeItemProps): JSX.Element => {
-    const { dispatch, webApp, tgUser, user } = useSetup();
+    const { dispatch, webApp, tgUser } = useSetup();
 
     const [isClick, setIsClick] = useState<boolean>(false);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     return (
         <div className={cn(styles.subscribeItem, {
@@ -26,8 +27,8 @@ export const SubscribeItem = ({ type, link, isAuth, isBorder }: SubscribeItemPro
             </Htag>
             {
                 !isClick && !isAuth ?
-                    <Button text={setLocale(tgUser?.language_code).join} type='primary'
-                        onClick={() => {
+                    <Button className={cn(styles.subscribeButton, styles.joinButton)}
+                        text={setLocale(tgUser?.language_code).join} type='primary' onClick={() => {
                             if (link) {                                
                                 try {
                                     if (type !== 'twitter' && !isWebPlatform(webApp?.platform)) {
@@ -44,15 +45,23 @@ export const SubscribeItem = ({ type, link, isAuth, isBorder }: SubscribeItemPro
                             }
                         }} />
                 : isClick ?
-                    <FrameButton type='pending' onClick={() => {                       
-                        getUser({
-                            webApp: webApp,
-                            dispatch: dispatch,
-                            tgUser: tgUser,
-                        }). then(() => setIsClick(false));
-                        
-                    }} />
-                : <FrameButton type='ok' />
+                    <FrameButton className={cn(styles.subscribeButton, {
+                        [styles.loadingButton]: isLoading,
+                    })} type='pending' isLoading={isLoading}
+                        onClick={() => {
+                            setIsLoading(true);
+
+                            getUser({
+                                webApp: webApp,
+                                dispatch: dispatch,
+                                tgUser: tgUser,
+                            }). then(() => {
+                                setIsClick(false);
+                                setIsLoading(false);
+                            });
+                            
+                        }} />
+                : <FrameButton className={styles.subscribeButton} type='ok' />
             }
         </div>
     );

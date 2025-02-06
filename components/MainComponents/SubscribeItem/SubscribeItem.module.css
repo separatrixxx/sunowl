@@ -10,3 +10,17 @@
 .borderItem {
 	border-bottom: 1px solid var(--darkText);
 }
+
+.subscribeButton {
+	width: 78px !important;
+	padding: 8.5px 0 !important;
+	justify-items: center !important;
+}
+
+.joinButton {
+	padding: 3px 0 !important;
+}
+
+.loadingButton {
+	padding: 9.1px 0 !important;
+}

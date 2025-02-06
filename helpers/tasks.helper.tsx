@@ -23,7 +23,7 @@ export async function getTasks(args: BaseArguments) {
 }
 
 export async function checkTasks(args: CheckTaskArguments) {
-    const { dispatch, webApp, tgUser, taskId, delimeter, setIsClick, setIsLoading } = args;
+    const { dispatch, webApp, tgUser, taskId, delimeter, setIsClick, setIsLoading, setIsTaskError } = args;
 
     setIsLoading(true);
 
@@ -32,15 +32,20 @@ export async function checkTasks(args: CheckTaskArguments) {
             `/api/tasks/${tgUser?.id}/check/${taskId}`).then(r => {
                 if (r.data.data) {
                     ToastSuccess(setLocale(tgUser?.language_code).task_successfully_completed);
+
+                    dispatch(changeTasks(true));
+                    dispatch(changeUser(true));    
                 } else {
                     ToastError(setLocale(tgUser?.language_code).task_not_completed);
-                } if (r.data.prize_alert) {
+                    
+                    setIsTaskError(true);
+                    setTimeout(() => setIsTaskError(false), 2000);
+                } 
+
+                if (r.data.prize_alert) {
                     ToastSuccess(setLocale(tgUser?.language_code).congratulations_you_have_completed_tasks
                         .replace('$$$', String(delimeter)));
                 }
-
-                dispatch(changeTasks(true));
-                dispatch(changeUser(true));
             });
     } catch (err: any) {
         webApp?.showAlert(setLocale(tgUser?.language_code).errors.check_task_error);
@@ -62,10 +67,6 @@ export async function startTask(args: StartTaskArguments) {
                 webApp?.openTelegramLink(link);
             } else if (!isWaiting) {
                 webApp?.openLink(link);
-            }
-
-            if (!isWaiting) {
-                ToastSuccess(setLocale(tgUser?.language_code).checking_task);
             }
 
             if (text.toLowerCase().includes('twitter')) {

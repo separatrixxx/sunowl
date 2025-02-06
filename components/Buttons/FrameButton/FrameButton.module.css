@@ -4,7 +4,7 @@
 
 	width: fit-content;
 	height: fit-content;
-	padding: 9.5px 28.18px;
+	padding: 8.5px 28.18px;
 
 	border-radius: 26px;
 	justify-items: center;
@@ -24,6 +24,7 @@
 	fill: var(--green);
 
 	width: 21px;
+	margin: 2px 0;
 }
 
 .pendingFrame > svg,
@@ -40,13 +41,18 @@
 .weba:hover {
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-	filter: brightness(0.9);
+	background: var(--hoverGreen);
+}
+
+.text {
+	margin: 1px 0 4px 0;
 }
 
 .spinner {
 	width: 15px;
 	height: 15px;
 	margin: 0.6px 0;
+	margin: 2px 0;
 
 	animation: spin 1s linear infinite;
 

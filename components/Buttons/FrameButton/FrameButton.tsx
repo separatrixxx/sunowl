@@ -29,7 +29,7 @@ export const FrameButton = ({ type, isLoading, className, onClick }: FrameButton
                 !isLoading && type !== 'pending' ?
                     <Icon />
                 : !isLoading && type === 'pending' ?
-                    <Htag tag='s'>
+                    <Htag tag='s' className={styles.text}>
                         {setLocale(tgUser?.language_code).check}
                     </Htag>
                 : <div className={styles.spinner} />

@@ -29,8 +29,15 @@
 	color: var(--missedText);
 }
 
+.errorText,
+.errorText > span {
+	color: var(--primary);
+}
+
 .taskItemButton {
 	justify-items: center;
+
+	align-self: start;
 
 	width: 80px !important;
 	padding: 7px 5px;

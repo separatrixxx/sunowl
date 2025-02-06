@@ -56,7 +56,7 @@ export const FrensPage = (): JSX.Element => {
                                 {setLocale(tgUser.language_code).invite_frens_text}
                             </Htag>
                             <BorderButton text={setLocale(tgUser.language_code).how_much_spins_for_frens + '?'}
-                                isPrimary={true} onClick={() => setIsActive2(true)} />
+                                onClick={() => setIsActive2(true)} />
                             <FrensList />
                             <MainButton className={styles.frensButton}
                                 text={setLocale(tgUser.language_code).invite_frens} type='primary'

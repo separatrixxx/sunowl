@@ -92,7 +92,6 @@ export const en = {
     go: "GO",
     get_spin_for_task_done: "GET 2 SPIN POINTS FOR 15 TASK DONE",
     tas_done_your_points_ready: "TASK DONE. YOUR POINTS ARE READY",
-    checking_task: "Checking the task",
     task_not_completed: "Task not completed. Please, retry the task",
     task_successfully_completed: "The task was successfully completed",
     like: "LIKE",

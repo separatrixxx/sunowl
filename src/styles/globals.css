@@ -40,7 +40,9 @@ a {
 :root {
 	--primary: #EF3C40;
 	--lightPrimary: #FF595D;
+	--lighterPrimary: #FF9598;
 	--darkPrimary: #DB1D1D;
+	--hoverPrimary: #971E20;
 	--second: #5C78B1;
 	--black: #000;
 	--dark: #0B152C;
@@ -57,6 +59,7 @@ a {
 	--lightGreen: #3AB06A;
 	--green: #11773A;
 	--darkGreen: #0E3029;
+	--hoverGreen: #1D7641;
 	--yellow: #F6C42F;
 	--error: #FF1500;
 	--banana: #FFC803;
